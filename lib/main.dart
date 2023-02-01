@@ -1,8 +1,9 @@
 import 'package:app_meditation/ui/res/app_theme.dart';
 import 'package:app_meditation/ui/ui/main_screen.dart';
+import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class App extends StatelessWidget {
         ],
         supportedLocales: AppLocalizations.supportedLocales,
         locale: const Locale('en'),
-        home: const MainScreen(),
+        home: OnboardingScreen(),
       )
   );
 }

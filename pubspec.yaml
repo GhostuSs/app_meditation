@@ -9,20 +9,33 @@ environment:
   sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
-  just_audio: ^0.9.31
   cupertino_icons: ^1.0.2
+  just_audio: ^0.9.31
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.6.1
+  json_serializable: ^6.5.4
   intl: ^0.17.0
+  flutter_bloc: ^8.1.1
+  hive: ^2.2.3
+  bloc: ^8.1.0
+  path_provider: ^2.0.12
+  appsflyer_sdk: ^6.9.3
+  onesignal_flutter: ^3.5.0
+  json_annotation: ^4.8.0
+  flutter_svg_provider: ^1.0.3
+  page_transition: ^2.0.9
 
 dev_dependencies:
   dart_code_metrics: ^5.4.0
   flutter_test:
     sdk: flutter
   surf_lint_rules: ^1.0.0
+  hive_generator: ^2.0.0
+  build_runner: ^2.3.2
+  flutter_gen_runner: ^5.1.0+1
 
 flutter_gen:
   integrations:
@@ -35,3 +48,4 @@ flutter:
   assets:
     - assets/audio/
     - assets/images/
+    - assets/fonts/
