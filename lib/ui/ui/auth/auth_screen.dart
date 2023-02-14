@@ -56,7 +56,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               child: Icon(Icons.check,color: AppColors.purple,size: 15.w,),
                             ),
                           ),
-                          const SizedBox(width: 10,),
+                          const SizedBox(width: 9,),
                           RichText(text: TextSpan(
                               text: applocale.agreeWith,
                               style: AppTypography.mainStyle.copyWith(
