@@ -1,4 +1,10 @@
 {
-  "test": "test",
-  "testq": "testq"
+  "continu": "Continue",
+  "authHeader": "Register\nto get access to Soulmates",
+  "agreeWith": "Agree with",
+  "termsAndConditions": "Terms & Conditions",
+  "and": "and",
+  "privacy": "Privacy Policy",
+  "haveAcc": "Do you really have account? ",
+  "signIn": "Sign in"
 }

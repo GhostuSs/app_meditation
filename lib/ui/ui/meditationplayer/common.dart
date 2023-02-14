@@ -3,11 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class SeekBar extends StatefulWidget {
-  final Duration duration;
-  final Duration position;
-  final Duration bufferedPosition;
-  final ValueChanged<Duration>? onChanged;
-  final ValueChanged<Duration>? onChangeEnd;
 
   const SeekBar({
     Key? key,
@@ -17,6 +12,11 @@ class SeekBar extends StatefulWidget {
     this.onChanged,
     this.onChangeEnd,
   }) : super(key: key);
+  final Duration duration;
+  final Duration position;
+  final Duration bufferedPosition;
+  final ValueChanged<Duration>? onChanged;
+  final ValueChanged<Duration>? onChangeEnd;
 
   @override
   SeekBarState createState() => SeekBarState();
@@ -47,7 +47,6 @@ class SeekBarState extends State<SeekBar> {
           ),
           child: ExcludeSemantics(
             child: Slider(
-              min: 0.0,
               max: widget.duration.inMilliseconds.toDouble(),
               value: min(widget.bufferedPosition.inMilliseconds.toDouble(),
                   widget.duration.inMilliseconds.toDouble()),
@@ -73,7 +72,6 @@ class SeekBarState extends State<SeekBar> {
             inactiveTrackColor: Colors.transparent,
           ),
           child: Slider(
-            min: 0.0,
             max: widget.duration.inMilliseconds.toDouble(),
             value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
                 widget.duration.inMilliseconds.toDouble()),
@@ -98,7 +96,7 @@ class SeekBarState extends State<SeekBar> {
           bottom: 0.0,
           child: Text(
               RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                  .firstMatch("$_remaining")
+                  .firstMatch('$_remaining')
                   ?.group(1) ??
                   '$_remaining',
               style: Theme.of(context).textTheme.caption),
@@ -132,11 +130,11 @@ class HiddenThumbComponentShape extends SliderComponentShape {
 }
 
 class PositionData {
+
+  PositionData(this.position, this.bufferedPosition, this.duration);
   final Duration position;
   final Duration bufferedPosition;
   final Duration duration;
-
-  PositionData(this.position, this.bufferedPosition, this.duration);
 }
 
 void showSliderDialog({

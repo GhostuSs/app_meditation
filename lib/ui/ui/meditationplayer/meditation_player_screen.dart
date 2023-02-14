@@ -45,7 +45,7 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
       await _player.setAudioSource(AudioSource.asset('assets/audio/sleepspace.mp3'));
     } catch (e) {
       if (kDebugMode) {
-        print("Error loading audio source: $e");
+        print('Error loading audio source: $e');
       }
     }
   }
@@ -116,9 +116,9 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
 
 /// Displays the play/pause button and volume/speed sliders.
 class ControlButtons extends StatelessWidget {
-  final AudioPlayer player;
 
   const ControlButtons(this.player, {Key? key}) : super(key: key);
+  final AudioPlayer player;
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +131,7 @@ class ControlButtons extends StatelessWidget {
           onPressed: () {
             showSliderDialog(
               context: context,
-              title: "Adjust volume",
+              title: 'Adjust volume',
               divisions: 10,
               min: 0.0,
               max: 1.0,
@@ -190,7 +190,7 @@ class ControlButtons extends StatelessWidget {
             onPressed: () {
               showSliderDialog(
                 context: context,
-                title: "Adjust speed",
+                title: 'Adjust speed',
                 divisions: 10,
                 min: 0.5,
                 max: 1.5,

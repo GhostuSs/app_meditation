@@ -1,21 +1,18 @@
+import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum Type { main, additional }
-
 class MainButton extends StatelessWidget {
-  final VoidCallback? onTap;
-  final Type? type;
-  final double? width;
-  final String label;
   const MainButton({
     Key? key,
     this.onTap,
-    this.type,
     this.width,
     required this.label,
   }) : super(key: key);
+  final VoidCallback? onTap;
+  final double? width;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +20,19 @@ class MainButton extends StatelessWidget {
       onTap: onTap,
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
-      borderRadius: BorderRadius.circular(4.r),
+      borderRadius: BorderRadius.circular(20.r),
       child: Container(
-        height: 48.h,
-        width: width ?? 100.w,
+        height: 62.h,
+        width: width,
         decoration: BoxDecoration(
-          color: type == Type.main ? AppColors.orange : AppColors.white,
-          borderRadius: BorderRadius.circular(4.r),
+          color: AppColors.black,
+          borderRadius: BorderRadius.circular(20.r),
         ),
         child: Center(
           child: Text(
             label,
+            style: AppTypography.mainStyle
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ),
       ),
