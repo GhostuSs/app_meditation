@@ -8,5 +8,6 @@ abstract class AppColors{
   static const Color pink = Color(0xFFDE5C6D);
   static const Color purple = Color(0xFF6357DB);
   static const Color green = Color(0xFF57DB9C);
+  static const Color darkGray = Color.fromRGBO(19, 38, 40, 1);
 
 }

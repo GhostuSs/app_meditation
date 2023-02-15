@@ -12,10 +12,14 @@ class Assets {
   static const String fontsInterMedium = 'assets/fonts/Inter-Medium.ttf';
   static const String fontsInterRegular = 'assets/fonts/Inter-Regular.ttf';
   static const String fontsInterSemiBold = 'assets/fonts/Inter-SemiBold.ttf';
+  static const String imagesAppIcon = 'assets/images/app_icon.png';
+  static const String imagesMail = 'assets/images/mail.svg';
   static const String imagesOnb1img = 'assets/images/onb1img.png';
   static const String imagesOnb2img = 'assets/images/onb2img.png';
   static const String imagesOnb3img = 'assets/images/onb3img.png';
   static const String imagesOnb4img = 'assets/images/onb4img.png';
   static const String imagesOnb5img = 'assets/images/onb5img.png';
+  static const String imagesPerson = 'assets/images/person.svg';
+  static const String imagesShape = 'assets/images/phone.svg';
 
 }

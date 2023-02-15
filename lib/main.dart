@@ -1,10 +1,10 @@
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
 import 'package:app_meditation/ui/res/app_theme.dart';
+import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
 import 'package:app_meditation/ui/ui/main_screen.dart';
 import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -53,6 +53,6 @@ class App extends StatelessWidget {
             locale: const Locale('en'),
             home: Hive.box<bool>('onbseen').values.first == false
                 ? OnboardingScreen()
-                : const MainScreen(),
+                : const AuthScreen(),
           ));
 }

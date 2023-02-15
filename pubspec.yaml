@@ -32,6 +32,8 @@ dependencies:
   appmetrica_plugin: ^1.1.0
   firebase_auth: ^4.2.6
   firebase_core: ^2.5.0
+  mask_text_input_formatter: ^2.4.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   dart_code_metrics: ^5.4.0
