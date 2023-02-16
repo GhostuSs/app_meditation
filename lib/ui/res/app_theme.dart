@@ -20,6 +20,12 @@ abstract class AppTheme{
         900: AppColors.purple,
       },
     ),
+    sliderTheme: SliderThemeData(
+      trackHeight: 4.0,
+      valueIndicatorColor: AppColors.white,
+      thumbColor: AppColors.white,
+      activeTrackColor: AppColors.white, thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6.r),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       focusColor: AppColors.purple,
       hintStyle: AppTypography.mainStyle.copyWith(

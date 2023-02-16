@@ -2,10 +2,13 @@ import 'package:app_meditation/domain/urls/url.dart';
 import 'package:app_meditation/generated/assets.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
+import 'package:app_meditation/ui/ui/auth/bloc/auth_cubit.dart';
 import 'package:app_meditation/ui/ui/auth/uikit/textfield.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:app_meditation/ui/uikit/main_button.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -22,30 +25,31 @@ class _AuthScreenState extends State<AuthScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController mailController = TextEditingController();
+  final AuthCubit cubit = AuthCubit();
   @override
   Widget build(BuildContext context) {
     final applocale = AppLocalizations.of(context)!;
-    return Container(
-      color: AppColors.purple,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
+    return BlocBuilder<AuthCubit,AuthState>(
+      bloc: cubit,
+      builder: (ctx,state)=>Scaffold(
+        backgroundColor:AppColors.purple,
         body: SafeArea(
           top: false,
           child: Stack(
             children: [
               const BgDecoration(),
               Padding(
-                padding: EdgeInsets.only(left: 22.w, right: 22.w, top: 40.h),
+                padding: EdgeInsets.only(left: 22.w, right: 22.w, top: 40.h,),
                 child: Column(
                   children: [
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                          text: applocale.authHeader,
-                          style: AppTypography.mainStyle.copyWith(
-                            fontSize: 38.w,
-                            fontWeight: FontWeight.w800,
-                          )),
+                        text: applocale.authHeader,
+                        style: AppTypography.mainStyle.copyWith(
+                          fontSize: 38.w,
+                          fontWeight: FontWeight.w800,
+                        ),),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 30.h, bottom: 18.h),
@@ -54,6 +58,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         filled: true,
                         hint: 'name',
                         icon: Assets.imagesPerson,
+                        onChanged: (s)=>cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text),
                       ),
                     ),
                     Padding(
@@ -63,13 +68,17 @@ class _AuthScreenState extends State<AuthScreen> {
                         filled: true,
                         hint: 'e-mail',
                         icon: Assets.imagesMail,
+                        onChanged: (s)=>cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text),
                         iconHeight: 14.h,
                       ),
                     ),
                     RawTextField(
                       controller: phoneController,
                       hint: 'phone',
-                      icon: Assets.imagesShape,
+                      icon: Assets.imagesPhone,
+                      onChanged: (s){
+                        if(phoneController.text.length<16)cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text);
+                      },
                       mask: MaskTextInputFormatter(mask: '+#(###)### ####'),
                     ),
                     Padding(
@@ -113,7 +122,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         child: Text(
                                           applocale.termsAndConditions,
                                           style:
-                                              AppTypography.mainStyle.copyWith(
+                                          AppTypography.mainStyle.copyWith(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12.w,
                                             color: AppColors.black,
@@ -135,12 +144,13 @@ class _AuthScreenState extends State<AuthScreen> {
                                   WidgetSpan(
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 3),
+                                        horizontal: 3,
+                                      ),
                                       child: InkWell(
                                         child: Text(
                                           applocale.privacy,
                                           style:
-                                              AppTypography.mainStyle.copyWith(
+                                          AppTypography.mainStyle.copyWith(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12.w,
                                             color: AppColors.black,
@@ -156,9 +166,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         ],
                       ),
                     ),
-                    MainButton(
+                    if(cubit.state.correct==true)MainButton(
                       label: applocale.continu,
-                      onTap: () {},
+                      onTap: ()=>cubit.navigateToReason(context: context, name: nameController.text, phone: phoneController.text,mail: mailController.text),
                     ),
                     const Spacer(),
                     RichText(

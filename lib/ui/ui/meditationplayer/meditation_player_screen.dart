@@ -1,15 +1,18 @@
+import 'package:app_meditation/ui/res/color.dart';
 import 'package:app_meditation/ui/ui/meditationplayer/common.dart';
+import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
-void main() => runApp(const MeditationPlayerScreen());
-
 class MeditationPlayerScreen extends StatefulWidget {
-  const MeditationPlayerScreen({Key? key}) : super(key: key);
+  final String meditationName;
+  const MeditationPlayerScreen({Key? key, required this.meditationName}) : super(key: key);
 
   @override
   MeditationPlayerScreenState createState() => MeditationPlayerScreenState();
@@ -29,11 +32,8 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
   }
 
   Future<void> _init() async {
-    // Inform the operating system of our app's audio attributes etc.
-    // We pick a reasonable default for an app that plays speech.
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.speech());
-    // Listen to errors during playback.
     _player.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
           if (kDebugMode) {
@@ -53,8 +53,6 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
   @override
   void dispose() {
     ambiguate(WidgetsBinding.instance)!.removeObserver(this);
-    // Release decoders and buffers back to the operating system making them
-    // available for other apps to use.
     _player.dispose();
     super.dispose();
   }
@@ -62,9 +60,6 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
-      // Release the player's resources when not in use. We use "stop" so that
-      // if the app resumes later, it will still remember what position to
-      // resume from.
       _player.stop();
     }
   }
@@ -81,34 +76,65 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Display play/pause button and volume/speed sliders.
-              ControlButtons(_player),
-              // Display seek bar. Using StreamBuilder, this widget rebuilds
-              // each time the position, buffered position or duration changes.
-              StreamBuilder<PositionData>(
-                stream: _positionDataStream,
-                builder: (context, snapshot) {
-                  final positionData = snapshot.data;
-                  return SeekBar(
-                    duration: positionData?.duration ?? Duration.zero,
-                    position: positionData?.position ?? Duration.zero,
-                    bufferedPosition:
-                    positionData?.bufferedPosition ?? Duration.zero,
-                    onChangeEnd: _player.seek,
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+    return Scaffold(
+      backgroundColor: AppColors.purple,
+      body: Stack(
+        children: [
+          const BgDecoration(),
+          SafeArea(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(onPressed: ()=>Navigator.pop(context), icon: const Icon(Icons.arrow_back_ios_new,color: AppColors.white,))
+                  ],
+                ),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 16.w),child: Container(
+                  decoration: const BoxDecoration(
+                  ),
+                  child: Container(
+                    height: 474.h,
+                    width: 396.w,
+                    decoration:const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/meditationimg.png'),
+                          fit: BoxFit.fill,
+                        )
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.w),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              SvgPicture.asset('assets/images/fullscreen.svg',color: Colors.white,),
+                            ],
+                          ),
+                          const Spacer(),
+                          StreamBuilder<PositionData>(
+                            stream: _positionDataStream,
+                            builder: (context, snapshot) {
+                              final positionData = snapshot.data;
+                              return SeekBar(
+                                duration: positionData?.duration ?? Duration.zero,
+                                position: positionData?.position ?? Duration.zero,
+                                bufferedPosition:
+                                positionData?.bufferedPosition ?? Duration.zero,
+                                onChangeEnd: _player.seek,
+                              );
+                            },
+                          ),
+                          ControlButtons(_player),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
@@ -127,7 +153,7 @@ class ControlButtons extends StatelessWidget {
       children: [
         // Opens volume slider dialog
         IconButton(
-          icon: const Icon(Icons.volume_up),
+          icon: const Icon(Icons.volume_up,color: AppColors.white,),
           onPressed: () {
             showSliderDialog(
               context: context,
@@ -162,20 +188,71 @@ class ControlButtons extends StatelessWidget {
               );
             } else if (playing != true) {
               return IconButton(
-                icon: const Icon(Icons.play_arrow),
-                iconSize: 64.0,
+                icon: Container(
+                  width:60.w,
+                  height:60.w,
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.white.withOpacity(0.2),
+                        spreadRadius: 5,
+                        blurRadius: 6
+                      )
+                    ]
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset('assets/images/play.svg'),
+                  ),
+                ),
+                iconSize: 60.w,
                 onPressed: player.play,
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
-                icon: const Icon(Icons.pause),
-                iconSize: 64.0,
+                icon: Container(
+                  width:60.w,
+                  height:60.w,
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: AppColors.white.withOpacity(0.2),
+                            spreadRadius: 5,
+                            blurRadius: 6
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Icon(Icons.pause,size: 23.w,),
+                  ),
+                ),
+                iconSize: 60.0.w,
                 onPressed: player.pause,
               );
             } else {
               return IconButton(
-                icon: const Icon(Icons.replay),
-                iconSize: 64.0,
+                icon: Container(
+                  width:60.w,
+                  height:60.w,
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: AppColors.white.withOpacity(0.2),
+                            spreadRadius: 5,
+                            blurRadius: 6
+                        )
+                      ]
+                  ),
+                  child: Center(
+                    child: Icon(Icons.replay,size: 23.w,),
+                  ),
+                ),
+                iconSize: 60.0.w,
                 onPressed: () => player.seek(Duration.zero),
               );
             }

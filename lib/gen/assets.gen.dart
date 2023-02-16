@@ -8,6 +8,8 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsAudioGen {
   const $AssetsAudioGen();
@@ -64,6 +66,13 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/images/app_icon.png');
+
+  /// File path: assets/images/mail.svg
+  SvgGenImage get mail => const SvgGenImage('assets/images/mail.svg');
+
   /// File path: assets/images/onb1img.png
   AssetGenImage get onb1img => const AssetGenImage('assets/images/onb1img.png');
 
@@ -79,9 +88,24 @@ class $AssetsImagesGen {
   /// File path: assets/images/onb5img.png
   AssetGenImage get onb5img => const AssetGenImage('assets/images/onb5img.png');
 
+  /// File path: assets/images/person.svg
+  SvgGenImage get person => const SvgGenImage('assets/images/person.svg');
+
+  /// File path: assets/images/phone.svg
+  SvgGenImage get phone => const SvgGenImage('assets/images/phone.svg');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [onb1img, onb2img, onb3img, onb4img, onb5img];
+  List<dynamic> get values => [
+        appIcon,
+        mail,
+        onb1img,
+        onb2img,
+        onb3img,
+        onb4img,
+        onb5img,
+        person,
+        phone
+      ];
 }
 
 class Assets {
@@ -151,6 +175,57 @@ class AssetGenImage {
   }
 
   ImageProvider provider() => AssetImage(_assetName);
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
 
   String get path => _assetName;
 

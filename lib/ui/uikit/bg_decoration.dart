@@ -16,7 +16,7 @@ class BgDecoration extends StatelessWidget {
       ),
       Positioned(
         right: -70.w,
-        top: 300.h,
+        top: 280.h,
         child: const _WhiteWidget(),
       ),
     ],
@@ -28,11 +28,11 @@ class _WhiteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    width: 264.w,
-    height: 264.w,
+    width: 320.w,
+    height: 320.w,
     decoration: BoxDecoration(
         gradient: RadialGradient(colors: [
-          AppColors.white.withOpacity(0.3),
+          AppColors.white.withOpacity(0.2),
           AppColors.white.withOpacity(0)
         ])),
   );

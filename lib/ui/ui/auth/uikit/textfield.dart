@@ -6,12 +6,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class RawTextField extends StatelessWidget {
-  const RawTextField({Key? key, this.filled, this.onChanged, required this.controller, required this.hint, required this.icon, this.iconHeight, this.mask}) : super(key: key);
+  const RawTextField({Key? key, this.filled, this.onChanged, required this.controller, required this.hint, required this.icon, this.iconHeight, this.mask, this.maxLength}) : super(key: key);
   final bool? filled;
   final String icon;
   final MaskTextInputFormatter? mask;
   final String hint;
   final double? iconHeight;
+  final int? maxLength;
   final Function(String)? onChanged;
   final TextEditingController controller;
 
@@ -27,6 +28,7 @@ class RawTextField extends StatelessWidget {
         fontSize: 18.w,
         color: filled==true ? AppColors.black : AppColors.white
     ),
+    maxLength: maxLength,
     decoration: InputDecoration(
       filled: filled ?? false,
       hintText: hint,

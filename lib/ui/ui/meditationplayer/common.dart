@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app_meditation/ui/res/color.dart';
 import 'package:flutter/material.dart';
 
 class SeekBar extends StatefulWidget {
@@ -31,7 +32,7 @@ class SeekBarState extends State<SeekBar> {
     super.didChangeDependencies();
 
     _sliderThemeData = SliderTheme.of(context).copyWith(
-      trackHeight: 2.0,
+      trackHeight: 4.0,
     );
   }
 
@@ -42,8 +43,8 @@ class SeekBarState extends State<SeekBar> {
         SliderTheme(
           data: _sliderThemeData.copyWith(
             thumbShape: HiddenThumbComponentShape(),
-            activeTrackColor: Colors.blue.shade100,
-            inactiveTrackColor: Colors.grey.shade300,
+            activeTrackColor: AppColors.white.withOpacity(0.1),
+            inactiveTrackColor: AppColors.white,
           ),
           child: ExcludeSemantics(
             child: Slider(

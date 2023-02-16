@@ -19,53 +19,50 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
         bloc: cubit,
-        builder: (context, state) => Container(
-              color: bgColors[state.currInd ?? 0],
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: SafeArea(
-                  bottom: false,
-                  top: false,
-                  child: Stack(
-                    children: [
-                      const BgDecoration(),
-                      Column(
-                        children: [
-                          Expanded(
-                              child: PageView.builder(
-                            itemCount: pages.length,
-                            controller: pageController,
-                            onPageChanged: (index) {
-                              cubit.changePage(index: index);
-                              // pageController.jumpToPage(index);
-                            },
-                            itemBuilder: (_, index) => pages[index],
-                          )),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: EdgeInsets.only(bottom: 50.h),
-                          child: MainButton(
-                            label: AppLocalizations.of(context)!.continu,
-                            onTap: state.currInd == pages.length - 1
-                                ? () => cubit.navigateToHome(context: context)
-                                : () async {
-                                    await pageController.nextPage(
-                                      duration: duration,
-                                      curve: Curves.linear,
-                                    );
-                                  },
-                            width: 320.w,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+        builder: (context, state) => Scaffold(
+          backgroundColor: bgColors[state.currInd ?? 0],
+          body: SafeArea(
+            bottom: false,
+            top: false,
+            child: Stack(
+              children: [
+                const BgDecoration(),
+                Column(
+                  children: [
+                    Expanded(
+                        child: PageView.builder(
+                      itemCount: pages.length,
+                      controller: pageController,
+                      onPageChanged: (index) {
+                        cubit.changePage(index: index);
+                        // pageController.jumpToPage(index);
+                      },
+                      itemBuilder: (_, index) => pages[index],
+                    )),
+                  ],
                 ),
-              ),
-            ));
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 50.h),
+                    child: MainButton(
+                      label: AppLocalizations.of(context)!.continu,
+                      onTap: state.currInd == pages.length - 1
+                          ? () => cubit.navigateToHome(context: context)
+                          : () async {
+                              await pageController.nextPage(
+                                duration: duration,
+                                curve: Curves.linear,
+                              );
+                            },
+                      width: 320.w,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 
   static List<Color> bgColors = [
