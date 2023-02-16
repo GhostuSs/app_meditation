@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeekBar extends StatefulWidget {
 
@@ -40,6 +42,20 @@ class SeekBarState extends State<SeekBar> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Positioned(
+          left: 16.0,
+          bottom: 0.0,
+          child: Text(
+              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
+                  .firstMatch('${widget.position}')
+                  ?.group(1) ??
+                  '${widget.position}',
+            style: AppTypography.mainStyle.copyWith(
+              color: AppColors.white,
+              fontSize: 12.w,
+              fontWeight: FontWeight.w400,
+            ),),
+        ),
         SliderTheme(
           data: _sliderThemeData.copyWith(
             thumbShape: HiddenThumbComponentShape(),
@@ -97,10 +113,15 @@ class SeekBarState extends State<SeekBar> {
           bottom: 0.0,
           child: Text(
               RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                  .firstMatch('$_remaining')
+                  .firstMatch('-$_remaining')
                   ?.group(1) ??
-                  '$_remaining',
-              style: Theme.of(context).textTheme.caption),
+                  '-$_remaining',
+              style: AppTypography.mainStyle.copyWith(
+                color: AppColors.white,
+                fontSize: 12.w,
+                fontWeight: FontWeight.w400,
+              ),
+          ),
         ),
       ],
     );

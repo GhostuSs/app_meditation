@@ -19,6 +19,7 @@ class Assets {
   static const String imagesHeartDamaged = 'assets/images/heartDamaged.svg';
   static const String imagesMail = 'assets/images/mail.svg';
   static const String imagesMeditationimg = 'assets/images/meditationimg.png';
+  static const String imagesNext = 'assets/images/next.svg';
   static const String imagesOnb1img = 'assets/images/onb1img.png';
   static const String imagesOnb2img = 'assets/images/onb2img.png';
   static const String imagesOnb3img = 'assets/images/onb3img.png';
@@ -29,5 +30,7 @@ class Assets {
   static const String imagesPersonCircle = 'assets/images/personCircle.svg';
   static const String imagesPhone = 'assets/images/phone.svg';
   static const String imagesPlay = 'assets/images/play.svg';
+  static const String imagesPrev = 'assets/images/prev.svg';
+  static const String imagesShare = 'assets/images/share.svg';
 
 }

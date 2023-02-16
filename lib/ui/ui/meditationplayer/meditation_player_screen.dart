@@ -20,6 +20,7 @@ class MeditationPlayerScreen extends StatefulWidget {
 
 class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with WidgetsBindingObserver {
   final _player = AudioPlayer();
+  bool soundOn=true;
 
   @override
   void initState(){
@@ -125,7 +126,10 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
                               );
                             },
                           ),
-                          ControlButtons(_player),
+                          ControlButtons(_player, soundOn: soundOn, onSoundTap: ()=>setState((){
+                            setState(()=>soundOn=!soundOn);
+                            _player.setVolume(soundOn ? 1.0 : 0.0);
+                          }),),
                         ],
                       ),
                     ),
@@ -140,143 +144,117 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
   }
 }
 
-/// Displays the play/pause button and volume/speed sliders.
 class ControlButtons extends StatelessWidget {
 
-  const ControlButtons(this.player, {Key? key}) : super(key: key);
+  const ControlButtons(this.player, {Key? key, required this.soundOn, required this.onSoundTap}) : super(key: key);
   final AudioPlayer player;
+  final bool soundOn;
+  final VoidCallback onSoundTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Opens volume slider dialog
+        SvgPicture.asset('assets/images/share.svg',),
+        Row(
+          children: [
+            SvgPicture.asset('assets/images/prev.svg'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
+              child: StreamBuilder<PlayerState>(
+                stream: player.playerStateStream,
+                builder: (context, snapshot) {
+                  final playerState = snapshot.data;
+                  final processingState = playerState?.processingState;
+                  final playing = playerState?.playing;
+                  if (processingState == ProcessingState.loading ||
+                      processingState == ProcessingState.buffering) {
+                    return Container(
+                      margin: const EdgeInsets.all(8.0),
+                      width: 64.0,
+                      height: 64.0,
+                      child: const CircularProgressIndicator(),
+                    );
+                  } else if (playing != true) {
+                    return IconButton(
+                      icon: Container(
+                        width:60.w,
+                        height:60.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: AppColors.white.withOpacity(0.2),
+                                  spreadRadius: 5,
+                                  blurRadius: 6
+                              )
+                            ]
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset('assets/images/play.svg'),
+                        ),
+                      ),
+                      iconSize: 60.w,
+                      onPressed: player.play,
+                    );
+                  } else if (processingState != ProcessingState.completed) {
+                    return IconButton(
+                      icon: Container(
+                        width:60.w,
+                        height:60.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: AppColors.white.withOpacity(0.2),
+                                  spreadRadius: 5,
+                                  blurRadius: 6
+                              )
+                            ]
+                        ),
+                        child: Center(
+                          child: Icon(Icons.pause,size: 23.w,),
+                        ),
+                      ),
+                      iconSize: 60.0.w,
+                      onPressed: player.pause,
+                    );
+                  } else {
+                    return IconButton(
+                      icon: Container(
+                        width:60.w,
+                        height:60.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: AppColors.white.withOpacity(0.2),
+                                  spreadRadius: 5,
+                                  blurRadius: 6
+                              )
+                            ]
+                        ),
+                        child: Center(
+                          child: Icon(Icons.replay,size: 23.w,),
+                        ),
+                      ),
+                      iconSize: 60.0.w,
+                      onPressed: () => player.seek(Duration.zero),
+                    );
+                  }
+                },
+              ),
+            ),
+            SvgPicture.asset('assets/images/next.svg'),
+          ],
+        ),
         IconButton(
-          icon: const Icon(Icons.volume_up,color: AppColors.white,),
-          onPressed: () {
-            showSliderDialog(
-              context: context,
-              title: 'Adjust volume',
-              divisions: 10,
-              min: 0.0,
-              max: 1.0,
-              value: player.volume,
-              stream: player.volumeStream,
-              onChanged: player.setVolume,
-            );
-          },
-        ),
-
-        /// This StreamBuilder rebuilds whenever the player state changes, which
-        /// includes the playing/paused state and also the
-        /// loading/buffering/ready state. Depending on the state we show the
-        /// appropriate button or loading indicator.
-        StreamBuilder<PlayerState>(
-          stream: player.playerStateStream,
-          builder: (context, snapshot) {
-            final playerState = snapshot.data;
-            final processingState = playerState?.processingState;
-            final playing = playerState?.playing;
-            if (processingState == ProcessingState.loading ||
-                processingState == ProcessingState.buffering) {
-              return Container(
-                margin: const EdgeInsets.all(8.0),
-                width: 64.0,
-                height: 64.0,
-                child: const CircularProgressIndicator(),
-              );
-            } else if (playing != true) {
-              return IconButton(
-                icon: Container(
-                  width:60.w,
-                  height:60.w,
-                  decoration: BoxDecoration(
-                      color: AppColors.white,
-                      shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.white.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 6
-                      )
-                    ]
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset('assets/images/play.svg'),
-                  ),
-                ),
-                iconSize: 60.w,
-                onPressed: player.play,
-              );
-            } else if (processingState != ProcessingState.completed) {
-              return IconButton(
-                icon: Container(
-                  width:60.w,
-                  height:60.w,
-                  decoration: BoxDecoration(
-                      color: AppColors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: AppColors.white.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 6
-                        )
-                      ]
-                  ),
-                  child: Center(
-                    child: Icon(Icons.pause,size: 23.w,),
-                  ),
-                ),
-                iconSize: 60.0.w,
-                onPressed: player.pause,
-              );
-            } else {
-              return IconButton(
-                icon: Container(
-                  width:60.w,
-                  height:60.w,
-                  decoration: BoxDecoration(
-                      color: AppColors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: AppColors.white.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 6
-                        )
-                      ]
-                  ),
-                  child: Center(
-                    child: Icon(Icons.replay,size: 23.w,),
-                  ),
-                ),
-                iconSize: 60.0.w,
-                onPressed: () => player.seek(Duration.zero),
-              );
-            }
-          },
-        ),
-        // Opens speed slider dialog
-        StreamBuilder<double>(
-          stream: player.speedStream,
-          builder: (context, snapshot) => IconButton(
-            icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            onPressed: () {
-              showSliderDialog(
-                context: context,
-                title: 'Adjust speed',
-                divisions: 10,
-                min: 0.5,
-                max: 1.5,
-                value: player.speed,
-                stream: player.speedStream,
-                onChanged: player.setSpeed,
-              );
-            },
-          ),
+          icon:Icon( soundOn ? Icons.volume_up : Icons.volume_off_rounded,color: AppColors.white,),
+          onPressed: onSoundTap,
         ),
       ],
     );
