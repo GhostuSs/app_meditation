@@ -38,21 +38,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ScreenUtilInit(
-      builder: (context, child) => MaterialApp(
-            theme: AppTheme.mainTheme,
-            debugShowCheckedModeBanner: false,
-            title: 'App meditation',
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              AppLocalizations.delegate
-            ],
-            supportedLocales: AppLocalizations.supportedLocales,
-            locale: const Locale('en'),
-            home: Hive.box<bool>('onbseen').values.first == false
-                ? OnboardingScreen()
-                : const HomeScreen(),
-          ),
-  );
+        builder: (context, child) => MaterialApp(
+          theme: AppTheme.mainTheme,
+          debugShowCheckedModeBanner: false,
+          title: 'App meditation',
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            AppLocalizations.delegate
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('en'),
+          home: Hive.box<bool>('onbseen').values.first == false
+              ? OnboardingScreen()
+              : const HomeScreen(),
+        ),
+      );
 }

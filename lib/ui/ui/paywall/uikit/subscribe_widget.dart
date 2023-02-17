@@ -9,7 +9,10 @@ class SubscribeWidget extends StatelessWidget {
       {Key? key,
       required this.onTap,
       required this.price,
-      required this.isSelected, required this.header, required this.footer, this.bestValue})
+      required this.isSelected,
+      required this.header,
+      required this.footer,
+      this.bestValue})
       : super(key: key);
   final VoidCallback onTap;
   final String price;
@@ -33,7 +36,9 @@ class SubscribeWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: isSelected ? AppColors.white : Colors.transparent,
-          border: bestValue==true&&isSelected ?  null : Border.all(color: AppColors.white),
+          border: bestValue == true && isSelected
+              ? null
+              : Border.all(color: AppColors.white),
         ),
         child: Column(
           children: [
@@ -50,7 +55,7 @@ class SubscribeWidget extends StatelessWidget {
               style: AppTypography.mainStyle.copyWith(
                 fontSize: 31.w,
                 fontWeight: FontWeight.w800,
-                color: isSelected ? AppColors.purple :AppColors.white,
+                color: isSelected ? AppColors.purple : AppColors.white,
               ),
             ),
             Text(
@@ -62,21 +67,28 @@ class SubscribeWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            if(bestValue==true&&isSelected)Container(
-              width: 116,
-              height: 16.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                color: AppColors.black,
-              ),
-              child: Center(
-                child: Text(applocale.best,style: AppTypography.mainStyle.copyWith(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.w,
-                  color: AppColors.white,
-                ),),
-              ),
-            )
+            if (bestValue == true && isSelected)
+              Container(
+                width: 116,
+                height: 16.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.r),
+                    topRight: Radius.circular(10.r),
+                  ),
+                  color: AppColors.black,
+                ),
+                child: Center(
+                  child: Text(
+                    applocale.best,
+                    style: AppTypography.mainStyle.copyWith(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12.w,
+                      color: AppColors.white,
+                    ),
+                  ),
+                ),
+              )
           ],
         ),
       ),

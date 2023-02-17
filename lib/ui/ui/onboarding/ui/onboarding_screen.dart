@@ -15,54 +15,55 @@ class OnboardingScreen extends StatelessWidget {
   final PageController pageController = PageController();
   static const Duration duration = Duration(milliseconds: 300);
   static const Curve curve = Curves.fastOutSlowIn;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
         bloc: cubit,
         builder: (context, state) => Scaffold(
-          backgroundColor: bgColors[state.currInd ?? 0],
-          body: SafeArea(
-            bottom: false,
-            top: false,
-            child: Stack(
-              children: [
-                const BgDecoration(),
-                Column(
+              backgroundColor: bgColors[state.currInd ?? 0],
+              body: SafeArea(
+                bottom: false,
+                top: false,
+                child: Stack(
                   children: [
-                    Expanded(
-                        child: PageView.builder(
-                      itemCount: pages.length,
-                      controller: pageController,
-                      onPageChanged: (index) {
-                        cubit.changePage(index: index);
-                        // pageController.jumpToPage(index);
-                      },
-                      itemBuilder: (_, index) => pages[index],
-                    )),
+                    const BgDecoration(),
+                    Column(
+                      children: [
+                        Expanded(
+                            child: PageView.builder(
+                          itemCount: pages.length,
+                          controller: pageController,
+                          onPageChanged: (index) {
+                            cubit.changePage(index: index);
+                            // pageController.jumpToPage(index);
+                          },
+                          itemBuilder: (_, index) => pages[index],
+                        )),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 20.h),
+                        child: MainButton(
+                          label: AppLocalizations.of(context)!.continu,
+                          onTap: state.currInd == pages.length - 1
+                              ? () => cubit.navigateToHome(context: context)
+                              : () async {
+                                  await pageController.nextPage(
+                                    duration: duration,
+                                    curve: Curves.linear,
+                                  );
+                                },
+                          width: 320.w,
+                        ),
+                      ),
+                    )
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 20.h),
-                    child: MainButton(
-                      label: AppLocalizations.of(context)!.continu,
-                      onTap: state.currInd == pages.length - 1
-                          ? () => cubit.navigateToHome(context: context)
-                          : () async {
-                              await pageController.nextPage(
-                                duration: duration,
-                                curve: Curves.linear,
-                              );
-                            },
-                      width: 320.w,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ));
+              ),
+            ));
   }
 
   static List<Color> bgColors = [
@@ -101,7 +102,7 @@ class OnboardingScreen extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment:Alignment.topCenter,
+            alignment: Alignment.topCenter,
             child: Text(
               'Play & Learn\nabout your\npartner',
               textAlign: TextAlign.center,
@@ -113,7 +114,10 @@ class OnboardingScreen extends StatelessWidget {
           ),
           Positioned(
             top: 168.h,
-            child: Image.asset('assets/images/onb2img.png',width: 330.w,),
+            child: Image.asset(
+              'assets/images/onb2img.png',
+              width: 330.w,
+            ),
           )
         ],
       ),
@@ -122,8 +126,12 @@ class OnboardingScreen extends StatelessWidget {
       children: [
         Positioned(
           top: -10.h,
-            left: -10.w,
-            child: Image.asset('assets/images/onb3img.png',height: 420.h,),),
+          left: -10.w,
+          child: Image.asset(
+            'assets/images/onb3img.png',
+            height: 420.h,
+          ),
+        ),
         Positioned(
           bottom: 100.h,
           left: 56.w,
@@ -139,7 +147,8 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               )
             ],
-          ),)
+          ),
+        )
       ],
     ),
     Padding(
@@ -147,11 +156,11 @@ class OnboardingScreen extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment:Alignment.topCenter,
-            child:Column(
+            alignment: Alignment.topCenter,
+            child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children:[
+                children: [
                   Text(
                     'Chat &\nhave fun',
                     textAlign: TextAlign.center,
@@ -163,15 +172,17 @@ class OnboardingScreen extends StatelessWidget {
                   Text(
                     'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
                     textAlign: TextAlign.center,
-                    style: AppTypography.mainStyle.copyWith(
-                        fontSize: 16.w, fontWeight: FontWeight.w300),
+                    style: AppTypography.mainStyle
+                        .copyWith(fontSize: 16.w, fontWeight: FontWeight.w300),
                   ),
-                ]
-            ),
+                ]),
           ),
           Positioned(
-            top: 120.h,
-              child: Image.asset('assets/images/onb4img.png',width: 370.w,)),
+              top: 120.h,
+              child: Image.asset(
+                'assets/images/onb4img.png',
+                width: 370.w,
+              )),
         ],
       ),
     ),

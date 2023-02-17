@@ -20,7 +20,8 @@ class PayWallScreen extends StatefulWidget {
 }
 
 class _PayWallScreenState extends State<PayWallScreen> {
-  int selected=0;
+  int selected = 0;
+
   @override
   Widget build(BuildContext context) {
     final applocale = AppLocalizations.of(context)!;
@@ -81,18 +82,41 @@ class _PayWallScreenState extends State<PayWallScreen> {
                     )
                   ],
                 ),
-                SizedBox(height:5.h),
+                SizedBox(height: 5.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  SubscribeWidget(onTap: selected!=0 ? ()=>setState(()=>selected=0) : (){}, price: '39.99', isSelected: selected==0, header: applocale.annual, footer: '\$3.99 ${applocale.perMonth}',bestValue: true,),
-                    SizedBox(width: 24.w,),
-                    SubscribeWidget(onTap: selected!=1 ? ()=>setState(()=>selected=1) : (){}, price: '4.99', isSelected: selected==1,header: applocale.monthly,footer: applocale.perMonth,)
-
+                    SubscribeWidget(
+                      onTap: selected != 0
+                          ? () => setState(() => selected = 0)
+                          : () {},
+                      price: '39.99',
+                      isSelected: selected == 0,
+                      header: applocale.annual,
+                      footer: '\$3.99 ${applocale.perMonth}',
+                      bestValue: true,
+                    ),
+                    SizedBox(
+                      width: 24.w,
+                    ),
+                    SubscribeWidget(
+                      onTap: selected != 1
+                          ? () => setState(() => selected = 1)
+                          : () {},
+                      price: '4.99',
+                      isSelected: selected == 1,
+                      header: applocale.monthly,
+                      footer: applocale.perMonth,
+                    )
                   ],
                 ),
-                SizedBox(height: 5.h,),
-                MainButton(label: applocale.tryForFreeAndSubscribe,onTap: navigateToMain,)
+                SizedBox(
+                  height: 5.h,
+                ),
+                MainButton(
+                  label: applocale.tryForFreeAndSubscribe,
+                  onTap: navigateToMain,
+                )
               ],
             ),
           ),
@@ -101,7 +125,10 @@ class _PayWallScreenState extends State<PayWallScreen> {
     );
   }
 
-  void navigateToMain(){
-    Navigator.push(context, PageTransition<Widget>(child: const HomeScreen(), type: PageTransitionType.rightToLeft));
+  void navigateToMain() {
+    Navigator.push(
+        context,
+        PageTransition<Widget>(
+            child: const HomeScreen(), type: PageTransitionType.rightToLeft));
   }
 }

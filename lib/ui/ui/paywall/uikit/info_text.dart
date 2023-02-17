@@ -11,23 +11,23 @@ class InfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: EdgeInsets.only(bottom: 9.h),
-    child: Row(
-      children: [
-        Column(
-          children: [SvgPicture.asset(Assets.imagesCheck)],
+        padding: EdgeInsets.only(bottom: 9.h),
+        child: Row(
+          children: [
+            Column(
+              children: [SvgPicture.asset(Assets.imagesCheck)],
+            ),
+            const SizedBox(
+              width: 17,
+            ),
+            Text(
+              label,
+              style: AppTypography.mainStyle.copyWith(
+                  fontSize: 13.w,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.white),
+            )
+          ],
         ),
-        const SizedBox(
-          width: 17,
-        ),
-        Text(
-          label,
-          style: AppTypography.mainStyle.copyWith(
-              fontSize: 13.w,
-              fontWeight: FontWeight.w400,
-              color: AppColors.white),
-        )
-      ],
-    ),
-  );
+      );
 }

@@ -25,20 +25,22 @@ class _AuthScreenState extends State<AuthScreen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController mailController = TextEditingController();
   final AuthCubit cubit = AuthCubit();
+
   @override
   Widget build(BuildContext context) {
     final applocale = AppLocalizations.of(context)!;
-    return BlocBuilder<AuthCubit,AuthState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       bloc: cubit,
-      builder: (ctx,state)=>Scaffold(
-        backgroundColor:AppColors.purple,
+      builder: (ctx, state) => Scaffold(
+        backgroundColor: AppColors.purple,
         body: SafeArea(
           top: false,
           child: Stack(
             children: [
               const BgDecoration(),
               Padding(
-                padding: EdgeInsets.only(left: 22.w, right: 22.w, top: 40.h,bottom: 20.h),
+                padding: EdgeInsets.only(
+                    left: 22.w, right: 22.w, top: 40.h, bottom: 20.h),
                 child: Column(
                   children: [
                     RichText(
@@ -48,7 +50,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         style: AppTypography.mainStyle.copyWith(
                           fontSize: 38.w,
                           fontWeight: FontWeight.w800,
-                        ),),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 30.h, bottom: 18.h),
@@ -57,7 +60,10 @@ class _AuthScreenState extends State<AuthScreen> {
                         filled: true,
                         hint: 'name',
                         icon: Assets.imagesPerson,
-                        onChanged: (s)=>cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text),
+                        onChanged: (s) => cubit.check(
+                            phone: phoneController.text,
+                            mail: mailController.text,
+                            name: nameController.text),
                       ),
                     ),
                     Padding(
@@ -67,7 +73,10 @@ class _AuthScreenState extends State<AuthScreen> {
                         filled: true,
                         hint: 'e-mail',
                         icon: Assets.imagesMail,
-                        onChanged: (s)=>cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text),
+                        onChanged: (s) => cubit.check(
+                            phone: phoneController.text,
+                            mail: mailController.text,
+                            name: nameController.text),
                         iconHeight: 14.h,
                       ),
                     ),
@@ -75,8 +84,12 @@ class _AuthScreenState extends State<AuthScreen> {
                       controller: phoneController,
                       hint: 'phone',
                       icon: Assets.imagesPhone,
-                      onChanged: (s){
-                        if(phoneController.text.length<16)cubit.check(phone: phoneController.text,mail: mailController.text,name: nameController.text);
+                      onChanged: (s) {
+                        if (phoneController.text.length < 16)
+                          cubit.check(
+                              phone: phoneController.text,
+                              mail: mailController.text,
+                              name: nameController.text);
                       },
                       mask: MaskTextInputFormatter(mask: '+#(###)### ####'),
                     ),
@@ -121,7 +134,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         child: Text(
                                           applocale.termsAndConditions,
                                           style:
-                                          AppTypography.mainStyle.copyWith(
+                                              AppTypography.mainStyle.copyWith(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12.w,
                                             color: AppColors.black,
@@ -149,7 +162,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         child: Text(
                                           applocale.privacy,
                                           style:
-                                          AppTypography.mainStyle.copyWith(
+                                              AppTypography.mainStyle.copyWith(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12.w,
                                             color: AppColors.black,
@@ -165,10 +178,15 @@ class _AuthScreenState extends State<AuthScreen> {
                         ],
                       ),
                     ),
-                    if(cubit.state.correct==true)MainButton(
-                      label: applocale.continu,
-                      onTap: ()=>cubit.navigateToReason(context: context, name: nameController.text, phone: phoneController.text,mail: mailController.text),
-                    ),
+                    if (cubit.state.correct == true)
+                      MainButton(
+                        label: applocale.continu,
+                        onTap: () => cubit.navigateToReason(
+                            context: context,
+                            name: nameController.text,
+                            phone: phoneController.text,
+                            mail: mailController.text),
+                      ),
                     const Spacer(),
                     RichText(
                       text: TextSpan(

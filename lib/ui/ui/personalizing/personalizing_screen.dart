@@ -18,6 +18,7 @@ class _PersonalizingScreenState extends State<PersonalizingScreen>
     with TickerProviderStateMixin {
   late AnimationController controller;
   double loadingData = 0.0;
+
   @override
   void initState() {
     controller = AnimationController(

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeekBar extends StatefulWidget {
-
   const SeekBar({
     Key? key,
     required this.duration,
@@ -67,7 +66,8 @@ class SeekBarState extends State<SeekBar> {
                   },
                   onChangeEnd: (value) {
                     if (widget.onChangeEnd != null) {
-                      widget.onChangeEnd!(Duration(milliseconds: value.round()));
+                      widget
+                          .onChangeEnd!(Duration(milliseconds: value.round()));
                     }
                     _dragValue = null;
                   },
@@ -78,11 +78,12 @@ class SeekBarState extends State<SeekBar> {
               data: _sliderThemeData.copyWith(
                   inactiveTrackColor: Colors.transparent,
                   trackShape: RoundedRectSliderTrackShape(),
-                  overlayShape: const RoundSliderOverlayShape(overlayRadius: 0.0)
-              ),
+                  overlayShape:
+                      const RoundSliderOverlayShape(overlayRadius: 0.0)),
               child: Slider(
                 max: widget.duration.inMilliseconds.toDouble(),
-                value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
+                value: min(
+                    _dragValue ?? widget.position.inMilliseconds.toDouble(),
                     widget.duration.inMilliseconds.toDouble()),
                 onChanged: (value) {
                   setState(() {
@@ -102,7 +103,9 @@ class SeekBarState extends State<SeekBar> {
             ),
           ],
         ),
-        SizedBox(height: 4.h,),
+        SizedBox(
+          height: 4.h,
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
           child: Row(
@@ -110,18 +113,17 @@ class SeekBarState extends State<SeekBar> {
             children: [
               Text(
                 RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                    .firstMatch('${widget.position}')
-                    ?.group(1) ??
+                        .firstMatch('${widget.position}')
+                        ?.group(1) ??
                     '${widget.position}',
                 style: AppTypography.mainStyle.copyWith(
                   color: AppColors.white.withOpacity(0.3),
                   fontSize: 11.w,
                   fontWeight: FontWeight.w400,
-                ),),
-              Text("-${RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                  .firstMatch('$_remaining')
-                  ?.group(1) ??
-                  '$_remaining'}",
+                ),
+              ),
+              Text(
+                "-${RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$').firstMatch('$_remaining')?.group(1) ?? '$_remaining'}",
                 style: AppTypography.mainStyle.copyWith(
                   color: AppColors.white.withOpacity(0.3),
                   fontSize: 11.w,
@@ -144,24 +146,24 @@ class HiddenThumbComponentShape extends SliderComponentShape {
 
   @override
   void paint(
-      PaintingContext context,
-      Offset center, {
-        required Animation<double> activationAnimation,
-        required Animation<double> enableAnimation,
-        required bool isDiscrete,
-        required TextPainter labelPainter,
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required TextDirection textDirection,
-        required double value,
-        required double textScaleFactor,
-        required Size sizeWithOverflow,
-      }) {}
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {}
 }
 
 class PositionData {
-
   PositionData(this.position, this.bufferedPosition, this.duration);
+
   final Duration position;
   final Duration bufferedPosition;
   final Duration duration;

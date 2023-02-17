@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:page_transition/page_transition.dart';
+
 part 'onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
@@ -21,7 +22,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   void navigateToHome({required BuildContext context}) {
-    Hive.box<bool>('onbseen').put('onbseen',true);
+    Hive.box<bool>('onbseen').put('onbseen', true);
     Navigator.push<Widget>(
       context,
       PageTransition(
