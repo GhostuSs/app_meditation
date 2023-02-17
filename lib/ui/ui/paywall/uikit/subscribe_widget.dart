@@ -48,7 +48,7 @@ class SubscribeWidget extends StatelessWidget {
             Text(
               '\$$price',
               style: AppTypography.mainStyle.copyWith(
-                fontSize: 33.w,
+                fontSize: 31.w,
                 fontWeight: FontWeight.w800,
                 color: isSelected ? AppColors.purple :AppColors.white,
               ),
@@ -56,7 +56,7 @@ class SubscribeWidget extends StatelessWidget {
             Text(
               footer,
               style: AppTypography.mainStyle.copyWith(
-                fontSize: 14.w,
+                fontSize: 12.w,
                 fontWeight: FontWeight.w300,
                 color: isSelected ? AppColors.black : AppColors.white,
               ),
@@ -64,7 +64,7 @@ class SubscribeWidget extends StatelessWidget {
             const Spacer(),
             if(bestValue==true&&isSelected)Container(
               width: 116,
-              height: 20,
+              height: 16.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
                 color: AppColors.black,

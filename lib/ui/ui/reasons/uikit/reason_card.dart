@@ -17,8 +17,8 @@ class ReasonCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(10.r),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 18.w,vertical: 8.h),
-        constraints: BoxConstraints.expand(height: 50.h),
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        constraints: BoxConstraints.expand(height: 52.h),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
             color: isSelected ? AppColors.white : Colors.transparent,

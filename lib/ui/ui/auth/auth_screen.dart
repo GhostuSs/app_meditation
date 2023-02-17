@@ -38,7 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
             children: [
               const BgDecoration(),
               Padding(
-                padding: EdgeInsets.only(left: 22.w, right: 22.w, top: 40.h,),
+                padding: EdgeInsets.only(left: 22.w, right: 22.w, top: 40.h,bottom: 20.h),
                 child: Column(
                   children: [
                     RichText(

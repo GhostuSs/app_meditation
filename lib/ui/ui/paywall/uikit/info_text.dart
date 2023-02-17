@@ -11,7 +11,7 @@ class InfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: EdgeInsets.only(bottom: 13.h),
+    padding: EdgeInsets.only(bottom: 9.h),
     child: Row(
       children: [
         Column(
@@ -23,7 +23,7 @@ class InfoText extends StatelessWidget {
         Text(
           label,
           style: AppTypography.mainStyle.copyWith(
-              fontSize: 14.w,
+              fontSize: 13.w,
               fontWeight: FontWeight.w400,
               color: AppColors.white),
         )

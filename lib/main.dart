@@ -4,7 +4,6 @@ import 'package:app_meditation/ui/res/app_theme.dart';
 import 'package:app_meditation/ui/ui/home/home_screen.dart';
 import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,14 +13,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 Future<void> main() async {
   AppMetrica.runZoneGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
     await AppMetrica.activate(const AppMetricaConfig(AppConfig.yandexApiKey));
     await Hive.initFlutter();
     Hive.registerAdapter<UserData>(UserDataAdapter());
     await Hive.openBox<UserData>('user');
     await Hive.openBox<bool>('onbseen');
-    // await Hive.box<bool>('onbseen').clear();
-    // await Hive.box<UserData>('user').clear();
+    await Hive.box<bool>('onbseen').clear();
+    await Hive.box<UserData>('user').clear();
     if (Hive.box<bool>('onbseen').isEmpty) {
       await Hive.box<bool>('onbseen').put('onbseen', false);
     }

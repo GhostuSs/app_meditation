@@ -46,9 +46,6 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   ],
                 ),
                 SvgPicture.asset(Assets.imagesPaywall),
-                SizedBox(
-                  height: 10.h,
-                ),
                 Text(
                   applocale.trySoulmates,
                   textAlign: TextAlign.center,
@@ -57,8 +54,8 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       fontSize: 32.w,
                       color: AppColors.white),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 5.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 11.w),
@@ -79,12 +76,12 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       style: AppTypography.mainStyle.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.white,
-                        fontSize: 16.w,
+                        fontSize: 14.5.w,
                       ),
                     )
                   ],
                 ),
-                SizedBox(height:10.h),
+                SizedBox(height:5.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -94,7 +91,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
 
                   ],
                 ),
-                SizedBox(height: 10.h,),
+                SizedBox(height: 5.h,),
                 MainButton(label: applocale.tryForFreeAndSubscribe,onTap: navigateToMain,)
               ],
             ),

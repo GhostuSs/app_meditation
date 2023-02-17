@@ -22,7 +22,7 @@ class MainButton extends StatelessWidget {
       focusColor: Colors.transparent,
       borderRadius: BorderRadius.circular(20.r),
       child: Container(
-        height: 55.h,
+        height: 53.h,
         width: width,
         decoration: BoxDecoration(
           color: AppColors.black,

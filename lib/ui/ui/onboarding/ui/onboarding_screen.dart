@@ -44,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 50.h),
+                    padding: EdgeInsets.only(bottom: 20.h),
                     child: MainButton(
                       label: AppLocalizations.of(context)!.continu,
                       onTap: state.currInd == pages.length - 1
@@ -75,7 +75,7 @@ class OnboardingScreen extends StatelessWidget {
 
   static List<Widget> pages = [
     Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 20.h),
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.h),
       child: Column(
         children: [
           Image.asset('assets/images/onb1img.png'),
@@ -83,7 +83,7 @@ class OnboardingScreen extends StatelessWidget {
             'Improve your\nrelationship',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-              fontSize: 48.w,
+              fontSize: 44.w,
               fontWeight: FontWeight.w900,
             ),
           ),
@@ -91,60 +91,87 @@ class OnboardingScreen extends StatelessWidget {
             'Share moments. Be mindful and\nlearn your partner. Be happier\ntogether',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-                fontSize: 20.w, fontWeight: FontWeight.w300, height: 1.1.h),
+                fontSize: 17.w, fontWeight: FontWeight.w300, height: 1.1.h),
           ),
         ],
       ),
     ),
     Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 40.h),
-      child: Column(
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 25.h),
+      child: Stack(
         children: [
-          Text(
-            'Play & Learn\nabout your\npartner',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-              fontSize: 48.w,
-              fontWeight: FontWeight.w900,
+          Align(
+            alignment:Alignment.topCenter,
+            child: Text(
+              'Play & Learn\nabout your\npartner',
+              textAlign: TextAlign.center,
+              style: AppTypography.mainStyle.copyWith(
+                fontSize: 40.w,
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
-          const Spacer(),
-          Image.asset('assets/images/onb2img.png')
+          Positioned(
+            top: 168.h,
+            child: Image.asset('assets/images/onb2img.png',width: 330.w,),
+          )
         ],
       ),
     ),
-    Column(
+    Stack(
       children: [
-        Image.asset('assets/images/onb3img.png'),
-        Text(
-          'Improve your\nrelationship.\nBe mindful.',
-          textAlign: TextAlign.center,
-          style: AppTypography.mainStyle.copyWith(
-            fontSize: 48.w,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
+        Positioned(
+          top: -10.h,
+            left: -10.w,
+            child: Image.asset('assets/images/onb3img.png',height: 420.h,),),
+        Positioned(
+          bottom: 100.h,
+          left: 56.w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Improve your\nrelationship.\nBe mindful.',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle.copyWith(
+                  fontSize: 40.w,
+                  fontWeight: FontWeight.w900,
+                ),
+              )
+            ],
+          ),)
       ],
     ),
     Padding(
       padding: EdgeInsets.only(top: 40.h),
-      child: Column(
+      child: Stack(
         children: [
-          Text(
-            'Chat &\nhave fun',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-              fontSize: 48.w,
-              fontWeight: FontWeight.w900,
+          Align(
+            alignment:Alignment.topCenter,
+            child:Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children:[
+                  Text(
+                    'Chat &\nhave fun',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.mainStyle.copyWith(
+                      fontSize: 40.w,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  Text(
+                    'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.mainStyle.copyWith(
+                        fontSize: 16.w, fontWeight: FontWeight.w300),
+                  ),
+                ]
             ),
           ),
-          Text(
-            'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-                fontSize: 20.w, fontWeight: FontWeight.w300, height: 1.1.h),
-          ),
-          Image.asset('assets/images/onb4img.png'),
+          Positioned(
+            top: 120.h,
+              child: Image.asset('assets/images/onb4img.png',width: 370.w,)),
         ],
       ),
     ),
@@ -157,7 +184,7 @@ class OnboardingScreen extends StatelessWidget {
             'Create & save\nmemories',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-              fontSize: 48.w,
+              fontSize: 44.w,
               fontWeight: FontWeight.w900,
             ),
           ),

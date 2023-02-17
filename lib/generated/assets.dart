@@ -33,5 +33,6 @@ class Assets {
   static const String imagesPlay = 'assets/images/play.svg';
   static const String imagesPrev = 'assets/images/prev.svg';
   static const String imagesShare = 'assets/images/share.svg';
+  static const String imagesVolumeon = 'assets/images/volumeon.svg';
 
 }
