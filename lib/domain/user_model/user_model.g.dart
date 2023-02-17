@@ -48,3 +48,22 @@ class UserDataAdapter extends TypeAdapter<UserData> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
+      name: json['name'] as String?,
+      choose:
+          (json['choose'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      phone: json['phone'] as String?,
+      mail: json['mail'] as String?,
+    );
+
+Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
+      'name': instance.name,
+      'phone': instance.phone,
+      'choose': instance.choose,
+      'mail': instance.mail,
+    };

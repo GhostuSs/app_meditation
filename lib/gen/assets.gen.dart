@@ -70,8 +70,29 @@ class $AssetsImagesGen {
   AssetGenImage get appIcon =>
       const AssetGenImage('assets/images/app_icon.png');
 
+  /// File path: assets/images/check.svg
+  SvgGenImage get check => const SvgGenImage('assets/images/check.svg');
+
+  /// File path: assets/images/fire.svg
+  SvgGenImage get fire => const SvgGenImage('assets/images/fire.svg');
+
+  /// File path: assets/images/fullscreen.svg
+  SvgGenImage get fullscreen =>
+      const SvgGenImage('assets/images/fullscreen.svg');
+
+  /// File path: assets/images/heartDamaged.svg
+  SvgGenImage get heartDamaged =>
+      const SvgGenImage('assets/images/heartDamaged.svg');
+
   /// File path: assets/images/mail.svg
   SvgGenImage get mail => const SvgGenImage('assets/images/mail.svg');
+
+  /// File path: assets/images/meditationimg.png
+  AssetGenImage get meditationimg =>
+      const AssetGenImage('assets/images/meditationimg.png');
+
+  /// File path: assets/images/next.svg
+  SvgGenImage get next => const SvgGenImage('assets/images/next.svg');
 
   /// File path: assets/images/onb1img.png
   AssetGenImage get onb1img => const AssetGenImage('assets/images/onb1img.png');
@@ -88,23 +109,50 @@ class $AssetsImagesGen {
   /// File path: assets/images/onb5img.png
   AssetGenImage get onb5img => const AssetGenImage('assets/images/onb5img.png');
 
+  /// File path: assets/images/paywall.svg
+  SvgGenImage get paywall => const SvgGenImage('assets/images/paywall.svg');
+
   /// File path: assets/images/person.svg
   SvgGenImage get person => const SvgGenImage('assets/images/person.svg');
+
+  /// File path: assets/images/personCircle.svg
+  SvgGenImage get personCircle =>
+      const SvgGenImage('assets/images/personCircle.svg');
 
   /// File path: assets/images/phone.svg
   SvgGenImage get phone => const SvgGenImage('assets/images/phone.svg');
 
+  /// File path: assets/images/play.svg
+  SvgGenImage get play => const SvgGenImage('assets/images/play.svg');
+
+  /// File path: assets/images/prev.svg
+  SvgGenImage get prev => const SvgGenImage('assets/images/prev.svg');
+
+  /// File path: assets/images/share.svg
+  SvgGenImage get share => const SvgGenImage('assets/images/share.svg');
+
   /// List of all assets
   List<dynamic> get values => [
         appIcon,
+        check,
+        fire,
+        fullscreen,
+        heartDamaged,
         mail,
+        meditationimg,
+        next,
         onb1img,
         onb2img,
         onb3img,
         onb4img,
         onb5img,
+        paywall,
         person,
-        phone
+        personCircle,
+        phone,
+        play,
+        prev,
+        share
       ];
 }
 

@@ -20,6 +20,8 @@ Future<void> main() async {
     Hive.registerAdapter<UserData>(UserDataAdapter());
     await Hive.openBox<UserData>('user');
     await Hive.openBox<bool>('onbseen');
+    // await Hive.box<bool>('onbseen').clear();
+    // await Hive.box<UserData>('user').clear();
     if (Hive.box<bool>('onbseen').isEmpty) {
       await Hive.box<bool>('onbseen').put('onbseen', false);
     }

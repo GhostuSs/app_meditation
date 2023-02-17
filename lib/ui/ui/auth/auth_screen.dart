@@ -6,7 +6,6 @@ import 'package:app_meditation/ui/ui/auth/bloc/auth_cubit.dart';
 import 'package:app_meditation/ui/ui/auth/uikit/textfield.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:app_meditation/ui/uikit/main_button.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

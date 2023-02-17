@@ -19,6 +19,7 @@ class Assets {
   static const String imagesHeartDamaged = 'assets/images/heartDamaged.svg';
   static const String imagesMail = 'assets/images/mail.svg';
   static const String imagesMeditationimg = 'assets/images/meditationimg.png';
+  static const String imagesMute = 'assets/images/mute.svg';
   static const String imagesNext = 'assets/images/next.svg';
   static const String imagesOnb1img = 'assets/images/onb1img.png';
   static const String imagesOnb2img = 'assets/images/onb2img.png';

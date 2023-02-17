@@ -1,3 +1,4 @@
+import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:app_meditation/ui/ui/meditationplayer/common.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
@@ -11,8 +12,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MeditationPlayerScreen extends StatefulWidget {
-  final String meditationName;
   const MeditationPlayerScreen({Key? key, required this.meditationName}) : super(key: key);
+  final String meditationName;
 
   @override
   MeditationPlayerScreenState createState() => MeditationPlayerScreenState();
@@ -43,12 +44,13 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
         });
     // Try to load audio from a source and catch any errors.
     try {
-      await _player.setAudioSource(AudioSource.asset('assets/audio/sleepspace.mp3'));
+      await _player.setAudioSource(AudioSource.asset('assets/audio/${widget.meditationName}.mp3'));
     } catch (e) {
       if (kDebugMode) {
         print('Error loading audio source: $e');
       }
     }
+    _player.play();
   }
 
   @override
@@ -105,6 +107,7 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.w),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -113,23 +116,37 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
                             ],
                           ),
                           const Spacer(),
-                          StreamBuilder<PositionData>(
-                            stream: _positionDataStream,
-                            builder: (context, snapshot) {
-                              final positionData = snapshot.data;
-                              return SeekBar(
-                                duration: positionData?.duration ?? Duration.zero,
-                                position: positionData?.position ?? Duration.zero,
-                                bufferedPosition:
-                                positionData?.bufferedPosition ?? Duration.zero,
-                                onChangeEnd: _player.seek,
-                              );
-                            },
+                          Padding(
+                            padding: EdgeInsets.only(left: 5.w),
+                            child: Text(meditationFullName(widget.meditationName),style: AppTypography.mainStyle.copyWith(
+                              fontSize: 17.w,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.white,
+                            ),),
                           ),
-                          ControlButtons(_player, soundOn: soundOn, onSoundTap: ()=>setState((){
-                            setState(()=>soundOn=!soundOn);
-                            _player.setVolume(soundOn ? 1.0 : 0.0);
-                          }),),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child:StreamBuilder<PositionData>(
+                              stream: _positionDataStream,
+                              builder: (context, snapshot) {
+                                final positionData = snapshot.data;
+                                return SeekBar(
+                                  duration: positionData?.duration ?? Duration.zero,
+                                  position: positionData?.position ?? Duration.zero,
+                                  bufferedPosition:
+                                  positionData?.bufferedPosition ?? Duration.zero,
+                                  onChangeEnd: _player.seek,
+                                );
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left:10.w),
+                            child: ControlButtons(_player, soundOn: soundOn, onSoundTap: ()=>setState((){
+                              setState(()=>soundOn=!soundOn);
+                              _player.setVolume(soundOn ? 1.0 : 0.0);
+                            }),),
+                          ),
                         ],
                       ),
                     ),
@@ -141,6 +158,14 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen> with Wid
         ],
       ),
     );
+  }
+  String meditationFullName(String shortname){
+    switch(shortname){
+      case 'feelcalm': return 'How to be calm and relaxed...';
+      case 'meditate': return 'Meditate and be mindful...';
+      case 'sleepspace': return 'Enjoy your sleep...';
+      default:return '';
+    }
   }
 }
 
@@ -252,9 +277,9 @@ class ControlButtons extends StatelessWidget {
             SvgPicture.asset('assets/images/next.svg'),
           ],
         ),
-        IconButton(
-          icon:Icon( soundOn ? Icons.volume_up : Icons.volume_off_rounded,color: AppColors.white,),
-          onPressed: onSoundTap,
+        InkWell(
+          onTap: onSoundTap,
+          child:SvgPicture.asset(soundOn ? 'assets/images/volumeOn.svg' :'assets/images/mute.svg'),
         ),
       ],
     );

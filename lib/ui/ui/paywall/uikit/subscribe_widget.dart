@@ -1,22 +1,22 @@
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SubscribeWidget extends StatelessWidget {
-  final VoidCallback onTap;
-  final String price;
-  final String footer;
-  final String header;
-  final bool? bestValue;
-  final bool isSelected;
   const SubscribeWidget(
       {Key? key,
       required this.onTap,
       required this.price,
       required this.isSelected, required this.header, required this.footer, this.bestValue})
       : super(key: key);
+  final VoidCallback onTap;
+  final String price;
+  final String footer;
+  final String header;
+  final bool? bestValue;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {

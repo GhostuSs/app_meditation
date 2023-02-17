@@ -34,95 +34,103 @@ class SeekBarState extends State<SeekBar> {
     super.didChangeDependencies();
 
     _sliderThemeData = SliderTheme.of(context).copyWith(
-      trackHeight: 4.0,
+      trackHeight: 2.0,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Positioned(
-          left: 16.0,
-          bottom: 0.0,
-          child: Text(
-              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                  .firstMatch('${widget.position}')
-                  ?.group(1) ??
-                  '${widget.position}',
-            style: AppTypography.mainStyle.copyWith(
-              color: AppColors.white,
-              fontSize: 12.w,
-              fontWeight: FontWeight.w400,
-            ),),
-        ),
-        SliderTheme(
-          data: _sliderThemeData.copyWith(
-            thumbShape: HiddenThumbComponentShape(),
-            activeTrackColor: AppColors.white.withOpacity(0.1),
-            inactiveTrackColor: AppColors.white,
-          ),
-          child: ExcludeSemantics(
-            child: Slider(
-              max: widget.duration.inMilliseconds.toDouble(),
-              value: min(widget.bufferedPosition.inMilliseconds.toDouble(),
-                  widget.duration.inMilliseconds.toDouble()),
-              onChanged: (value) {
-                setState(() {
-                  _dragValue = value;
-                });
-                if (widget.onChanged != null) {
-                  widget.onChanged!(Duration(milliseconds: value.round()));
-                }
-              },
-              onChangeEnd: (value) {
-                if (widget.onChangeEnd != null) {
-                  widget.onChangeEnd!(Duration(milliseconds: value.round()));
-                }
-                _dragValue = null;
-              },
-            ),
-          ),
-        ),
-        SliderTheme(
-          data: _sliderThemeData.copyWith(
-            inactiveTrackColor: Colors.transparent,
-          ),
-          child: Slider(
-            max: widget.duration.inMilliseconds.toDouble(),
-            value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
-                widget.duration.inMilliseconds.toDouble()),
-            onChanged: (value) {
-              setState(() {
-                _dragValue = value;
-              });
-              if (widget.onChanged != null) {
-                widget.onChanged!(Duration(milliseconds: value.round()));
-              }
-            },
-            onChangeEnd: (value) {
-              if (widget.onChangeEnd != null) {
-                widget.onChangeEnd!(Duration(milliseconds: value.round()));
-              }
-              _dragValue = null;
-            },
-          ),
-        ),
-        Positioned(
-          right: 16.0,
-          bottom: 0.0,
-          child: Text(
-              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                  .firstMatch('-$_remaining')
-                  ?.group(1) ??
-                  '-$_remaining',
-              style: AppTypography.mainStyle.copyWith(
-                color: AppColors.white,
-                fontSize: 12.w,
-                fontWeight: FontWeight.w400,
+        Stack(
+          children: [
+            SliderTheme(
+              data: _sliderThemeData.copyWith(
+                thumbShape: HiddenThumbComponentShape(),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 6.0),
+                activeTrackColor: AppColors.white.withOpacity(0.1),
+                trackShape: const RoundedRectSliderTrackShape(),
+                inactiveTrackColor: AppColors.white,
               ),
-          ),
+              child: ExcludeSemantics(
+                child: Slider(
+                  max: widget.duration.inMilliseconds.toDouble(),
+                  value: min(widget.bufferedPosition.inMilliseconds.toDouble(),
+                      widget.duration.inMilliseconds.toDouble()),
+                  onChanged: (value) {
+                    setState(() {
+                      _dragValue = value;
+                    });
+                    if (widget.onChanged != null) {
+                      widget.onChanged!(Duration(milliseconds: value.round()));
+                    }
+                  },
+                  onChangeEnd: (value) {
+                    if (widget.onChangeEnd != null) {
+                      widget.onChangeEnd!(Duration(milliseconds: value.round()));
+                    }
+                    _dragValue = null;
+                  },
+                ),
+              ),
+            ),
+            SliderTheme(
+              data: _sliderThemeData.copyWith(
+                  inactiveTrackColor: Colors.transparent,
+                  trackShape: RoundedRectSliderTrackShape(),
+                  overlayShape: const RoundSliderOverlayShape(overlayRadius: 0.0)
+              ),
+              child: Slider(
+                max: widget.duration.inMilliseconds.toDouble(),
+                value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
+                    widget.duration.inMilliseconds.toDouble()),
+                onChanged: (value) {
+                  setState(() {
+                    _dragValue = value;
+                  });
+                  if (widget.onChanged != null) {
+                    widget.onChanged!(Duration(milliseconds: value.round()));
+                  }
+                },
+                onChangeEnd: (value) {
+                  if (widget.onChangeEnd != null) {
+                    widget.onChangeEnd!(Duration(milliseconds: value.round()));
+                  }
+                  _dragValue = null;
+                },
+              ),
+            ),
+          ],
         ),
+        SizedBox(height: 4.h,),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
+                    .firstMatch('${widget.position}')
+                    ?.group(1) ??
+                    '${widget.position}',
+                style: AppTypography.mainStyle.copyWith(
+                  color: AppColors.white.withOpacity(0.3),
+                  fontSize: 11.w,
+                  fontWeight: FontWeight.w400,
+                ),),
+              Text("-${RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
+                  .firstMatch('$_remaining')
+                  ?.group(1) ??
+                  '$_remaining'}",
+                style: AppTypography.mainStyle.copyWith(
+                  color: AppColors.white.withOpacity(0.3),
+                  fontSize: 11.w,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        )
       ],
     );
   }
@@ -183,7 +191,7 @@ void showSliderDialog({
             children: [
               Text('${snapshot.data?.toStringAsFixed(1)}$valueSuffix',
                   style: const TextStyle(
-                      fontFamily: 'Fixed',
+                      fontFamily: 'Inter',
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0)),
               Slider(

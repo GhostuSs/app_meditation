@@ -49,7 +49,6 @@ class _PersonalizingScreenState extends State<PersonalizingScreen>
             const BgDecoration(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [

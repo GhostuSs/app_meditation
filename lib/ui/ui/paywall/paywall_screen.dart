@@ -88,9 +88,9 @@ class _PayWallScreenState extends State<PayWallScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  SubscribeWidget(onTap: selected!=0 ? ()=>setState(()=>selected=0) : ()=>null, price: '39.99', isSelected: selected==0, header: applocale.annual, footer: '\$3.99 ${applocale.perMonth}',bestValue: true,),
+                  SubscribeWidget(onTap: selected!=0 ? ()=>setState(()=>selected=0) : (){}, price: '39.99', isSelected: selected==0, header: applocale.annual, footer: '\$3.99 ${applocale.perMonth}',bestValue: true,),
                     SizedBox(width: 24.w,),
-                    SubscribeWidget(onTap: selected!=1 ? ()=>setState(()=>selected=1) : ()=>null, price: '4.99', isSelected: selected==1,header: applocale.monthly,footer: applocale.perMonth,)
+                    SubscribeWidget(onTap: selected!=1 ? ()=>setState(()=>selected=1) : (){}, price: '4.99', isSelected: selected==1,header: applocale.monthly,footer: applocale.perMonth,)
 
                   ],
                 ),
