@@ -126,9 +126,8 @@ class HomeScreen extends StatelessWidget {
                                                 ),
                                                 InkWell(
                                                   onTap: () async =>
-                                                      await FlutterClipboard
-                                                          .copy(BaseUrls
-                                                              .shareLink),
+                                                      FlutterClipboard.copy(
+                                                          BaseUrls.shareLink),
                                                   focusColor:
                                                       Colors.transparent,
                                                   highlightColor:

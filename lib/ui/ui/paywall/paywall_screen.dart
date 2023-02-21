@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:app_meditation/domain/geo_service/geo_service.dart';
 import 'package:app_meditation/generated/assets.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
@@ -6,6 +9,8 @@ import 'package:app_meditation/ui/ui/paywall/uikit/info_text.dart';
 import 'package:app_meditation/ui/ui/paywall/uikit/subscribe_widget.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:app_meditation/ui/uikit/main_button.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,16 +42,35 @@ class _PayWallScreenState extends State<PayWallScreen> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     InkWell(
+                      onTap: () async {
+                        await AppMetrica.reportEventWithMap('paywall passed', {
+                          'subscrition': false,
+                          'chosen': 'nothing',
+                          'device info':
+                              await DeviceInformation.deviceIMEINumber
+                        });
+                        await Navigator.push<Widget>(
+                          context,
+                          PageTransition(
+                            child: const HomeScreen(),
+                            type: PageTransitionType.rightToLeft,
+                          ),
+                        );
+                      },
                       child: Icon(
                         Icons.clear,
                         color: AppColors.white,
+                        size: 20.w,
                       ),
                     ),
                   ],
                 ),
-                SvgPicture.asset(Assets.imagesPaywall),
+                SvgPicture.asset(
+                  Assets.imagesPaywall,
+                  height: 210.h,
+                ),
                 Text(
                   applocale.trySoulmates,
                   textAlign: TextAlign.center,
@@ -97,7 +121,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       bestValue: true,
                     ),
                     SizedBox(
-                      width: 24.w,
+                      width: 20.w,
                     ),
                     SubscribeWidget(
                       onTap: selected != 1
@@ -111,7 +135,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 20.h,
                 ),
                 MainButton(
                   label: applocale.tryForFreeAndSubscribe,
@@ -125,7 +149,16 @@ class _PayWallScreenState extends State<PayWallScreen> {
     );
   }
 
-  void navigateToMain() {
+  Future<void> navigateToMain() async {
+    final geo = await GeoService.determinePosition();
+    unawaited(AppMetrica.reportEventWithMap('paywall passed', {
+      'subscrition': true,
+      'chosen': selected == 0 ? 'year subscritption' : 'month subscription',
+      'device info': await DeviceInformation.deviceIMEINumber,
+      'geolocation': {'alt': geo.altitude, 'longt': geo.longitude},
+      'device model': await DeviceInformation.deviceModel,
+      'date': DateTime.now().toString(),
+    }));
     Navigator.push(
         context,
         PageTransition<Widget>(

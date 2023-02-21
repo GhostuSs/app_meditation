@@ -85,11 +85,12 @@ class _AuthScreenState extends State<AuthScreen> {
                       hint: 'phone',
                       icon: Assets.imagesPhone,
                       onChanged: (s) {
-                        if (phoneController.text.length < 16)
+                        if (phoneController.text.length < 16) {
                           cubit.check(
                               phone: phoneController.text,
                               mail: mailController.text,
                               name: nameController.text);
+                        }
                       },
                       mask: MaskTextInputFormatter(mask: '+#(###)### ####'),
                     ),

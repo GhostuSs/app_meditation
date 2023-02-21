@@ -157,25 +157,22 @@ class OnboardingScreen extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Chat &\nhave fun',
-                    textAlign: TextAlign.center,
-                    style: AppTypography.mainStyle.copyWith(
-                      fontSize: 40.w,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Text(
-                    'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
-                    textAlign: TextAlign.center,
-                    style: AppTypography.mainStyle
-                        .copyWith(fontSize: 16.w, fontWeight: FontWeight.w300),
-                  ),
-                ]),
+            child: Column(children: [
+              Text(
+                'Chat &\nhave fun',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle.copyWith(
+                  fontSize: 40.w,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              Text(
+                'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle
+                    .copyWith(fontSize: 16.w, fontWeight: FontWeight.w300),
+              ),
+            ]),
           ),
           Positioned(
               top: 120.h,

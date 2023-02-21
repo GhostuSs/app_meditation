@@ -77,7 +77,7 @@ class SeekBarState extends State<SeekBar> {
             SliderTheme(
               data: _sliderThemeData.copyWith(
                   inactiveTrackColor: Colors.transparent,
-                  trackShape: RoundedRectSliderTrackShape(),
+                  trackShape: const RoundedRectSliderTrackShape(),
                   overlayShape:
                       const RoundSliderOverlayShape(overlayRadius: 0.0)),
               child: Slider(

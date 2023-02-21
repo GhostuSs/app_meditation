@@ -29,7 +29,7 @@ class SubscribeWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(10.r),
       child: Container(
         constraints: BoxConstraints.expand(
-          width: 140.w,
+          width: 135.w,
           height: 110.h,
         ),
         padding: const EdgeInsets.only(top: 10),

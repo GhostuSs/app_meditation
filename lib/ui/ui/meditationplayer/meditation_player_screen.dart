@@ -49,9 +49,7 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
       await _player.setAudioSource(
           AudioSource.asset('assets/audio/${widget.meditationName}.mp3'));
     } catch (e) {
-      if (kDebugMode) {
-        print('Error loading audio source: $e');
-      }
+      debugPrint('Error loading audio source: $e');
     }
     _player.play();
   }
@@ -107,11 +105,13 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
                     child: Container(
                       height: 474.h,
                       width: 396.w,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/meditationimg.png'),
-                        fit: BoxFit.fill,
-                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24.r),
+                          image: const DecorationImage(
+                            image:
+                                AssetImage('assets/images/meditationimg.png'),
+                            fit: BoxFit.cover,
+                          )),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: 20.h, horizontal: 20.w),
@@ -310,9 +310,9 @@ class ControlButtons extends StatelessWidget {
         ),
         InkWell(
           onTap: onSoundTap,
-          child: SvgPicture.asset(soundOn
-              ? 'assets/images/volumeOn.svg'
-              : 'assets/images/mute.svg'),
+          child: SvgPicture.asset(
+              soundOn ? 'assets/images/volumeon.svg' : 'assets/images/mute.svg',
+              width: 20.w),
         ),
       ],
     );

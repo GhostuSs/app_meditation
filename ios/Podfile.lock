@@ -10,6 +10,8 @@ PODS:
   - AppsFlyerFramework/Main (6.9.1)
   - audio_session (0.0.1):
     - Flutter
+  - device_information (0.0.1):
+    - Flutter
   - FBSDKCoreKit (9.1.0):
     - FBSDKCoreKit/Basics (= 9.1.0)
     - FBSDKCoreKit/Core (= 9.1.0)
@@ -19,6 +21,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_facebook_sdk (0.0.1):
     - FBSDKCoreKit (~> 9.1.0)
+    - Flutter
+  - geolocator_apple (1.2.0):
     - Flutter
   - just_audio (0.0.1):
     - Flutter
@@ -53,8 +57,10 @@ DEPENDENCIES:
   - appmetrica_plugin (from `.symlinks/plugins/appmetrica_plugin/ios`)
   - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - device_information (from `.symlinks/plugins/device_information/ios`)
   - Flutter (from `Flutter`)
   - flutter_facebook_sdk (from `.symlinks/plugins/flutter_facebook_sdk/ios`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
@@ -74,10 +80,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/appsflyer_sdk/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
+  device_information:
+    :path: ".symlinks/plugins/device_information/ios"
   Flutter:
     :path: Flutter
   flutter_facebook_sdk:
     :path: ".symlinks/plugins/flutter_facebook_sdk/ios"
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
   onesignal_flutter:
@@ -92,9 +102,11 @@ SPEC CHECKSUMS:
   appsflyer_sdk: f420e5007d635511073ed8c63b2c6fcedefb4cba
   AppsFlyerFramework: dc9aa675faa8e1a2ed40fb295d3c5408ee2b972a
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  device_information: d652f6dcea86bdc5300ffd495486de1d5047bf4f
   FBSDKCoreKit: a00fe2efd780c195a5e09201bf51c56106245b40
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_facebook_sdk: 82c8d10c6226b66de5459d6115ab02d1ecd66cd9
+  geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   onesignal_flutter: e01b19b76406d2f303edabe36da8dc747443d679
   OneSignalXCFramework: 75844c29607ca95e6176f6f21257b4382c7fdbfb

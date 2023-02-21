@@ -23,15 +23,17 @@ class _PersonalizingScreenState extends State<PersonalizingScreen>
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 3),
     )..addListener(() {
         setState(() {});
         if (controller.isCompleted) {
           Navigator.push(
-              context,
-              PageTransition<Widget>(
-                  child: const PayWallScreen(),
-                  type: PageTransitionType.rightToLeft));
+            context,
+            PageTransition<Widget>(
+              child: const PayWallScreen(),
+              type: PageTransitionType.rightToLeft,
+            ),
+          );
         }
       });
     controller.forward();
@@ -80,7 +82,8 @@ class _PersonalizingScreenState extends State<PersonalizingScreen>
                         child: LinearProgressIndicator(
                           value: controller.value,
                           valueColor: const AlwaysStoppedAnimation<Color>(
-                              AppColors.white),
+                            AppColors.white,
+                          ),
                           backgroundColor: AppColors.white.withOpacity(0.1),
                           // color: AppColors.white,
                         ),
