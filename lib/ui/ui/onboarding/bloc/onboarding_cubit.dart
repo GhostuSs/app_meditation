@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+// import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:bloc/bloc.dart';
-import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:page_transition/page_transition.dart';
@@ -27,10 +26,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   Future<void> navigateToHome({required BuildContext context}) async {
     await Hive.box<bool>('onbseen').put('onbseen', true);
-    AppMetrica.reportEventWithMap('onboarding passed', {
-      'deviceInfo': await DeviceInformation.deviceIMEINumber,
-      'passedOnboarding': DateTime.now().toString(),
-    });
+    // AppMetrica.reportEventWithMap('onboarding passed', {
+    //   'deviceInfo': await DeviceInformation.deviceIMEINumber,
+    //   'passedOnboarding': DateTime.now().toString(),
+    // });
     Navigator.push<Widget>(
       context,
       PageTransition(

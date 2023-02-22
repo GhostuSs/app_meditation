@@ -1,7 +1,4 @@
 PODS:
-  - appmetrica_plugin (1.1.0):
-    - Flutter
-    - YandexMobileMetrica (~> 4.4)
   - appsflyer_sdk (6.8.0):
     - AppsFlyerFramework (= 6.9.1)
     - Flutter
@@ -44,17 +41,8 @@ PODS:
     - FlutterMacOS
   - url_launcher_ios (0.0.1):
     - Flutter
-  - YandexMobileMetrica (4.4.0):
-    - YandexMobileMetrica/Static (= 4.4.0)
-  - YandexMobileMetrica/Static (4.4.0):
-    - YandexMobileMetrica/Static/Core (= 4.4.0)
-    - YandexMobileMetrica/Static/Crashes (= 4.4.0)
-  - YandexMobileMetrica/Static/Core (4.4.0)
-  - YandexMobileMetrica/Static/Crashes (4.4.0):
-    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
-  - appmetrica_plugin (from `.symlinks/plugins/appmetrica_plugin/ios`)
   - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - device_information (from `.symlinks/plugins/device_information/ios`)
@@ -63,6 +51,7 @@ DEPENDENCIES:
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
+  - OneSignalXCFramework (< 4.0, >= 3.4.3)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -71,11 +60,8 @@ SPEC REPOS:
     - AppsFlyerFramework
     - FBSDKCoreKit
     - OneSignalXCFramework
-    - YandexMobileMetrica
 
 EXTERNAL SOURCES:
-  appmetrica_plugin:
-    :path: ".symlinks/plugins/appmetrica_plugin/ios"
   appsflyer_sdk:
     :path: ".symlinks/plugins/appsflyer_sdk/ios"
   audio_session:
@@ -98,7 +84,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  appmetrica_plugin: 4a29f127f4608f66aada648f02e1cb0054ba3f74
   appsflyer_sdk: f420e5007d635511073ed8c63b2c6fcedefb4cba
   AppsFlyerFramework: dc9aa675faa8e1a2ed40fb295d3c5408ee2b972a
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
@@ -112,8 +97,7 @@ SPEC CHECKSUMS:
   OneSignalXCFramework: 75844c29607ca95e6176f6f21257b4382c7fdbfb
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   url_launcher_ios: fb12c43172927bb5cf75aeebd073f883801f1993
-  YandexMobileMetrica: baf7cea47cb87fc9af963c4f747ce8dd7df3d7c0
 
-PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+PODFILE CHECKSUM: d0811c0571dca93ad5c5e74c7c7e05050886299a
 
 COCOAPODS: 1.11.3

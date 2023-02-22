@@ -5,8 +5,6 @@ import 'package:app_meditation/ui/ui/personalizing/personalizing_screen.dart';
 import 'package:app_meditation/ui/ui/reasons/uikit/reason_card.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:app_meditation/ui/uikit/main_button.dart';
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
-import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -107,13 +105,13 @@ class _ReasonScreenState extends State<ReasonScreen> {
                             Hive.box<UserData>('user').values.first;
                         user.choose = selected;
                         await Hive.box<UserData>('user').put('user', user);
-                        AppMetrica.reportEventWithMap('user authenticated', {
-                          'deviceInfo':
-                              await DeviceInformation.deviceIMEINumber,
-                          'action done at': DateTime.now().toString(),
-                          'userdata':
-                              Hive.box<UserData>('user').values.first.toJson()
-                        });
+                        // AppMetrica.reportEventWithMap('user authenticated', {
+                        //   'deviceInfo':
+                        //       await DeviceInformation.deviceIMEINumber,
+                        //   'action done at': DateTime.now().toString(),
+                        //   'userdata':
+                        //       Hive.box<UserData>('user').values.first.toJson()
+                        // });
                         Navigator.push(
                           context,
                           PageTransition<Widget>(

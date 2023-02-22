@@ -9,8 +9,6 @@ import 'package:app_meditation/ui/ui/paywall/uikit/info_text.dart';
 import 'package:app_meditation/ui/ui/paywall/uikit/subscribe_widget.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:app_meditation/ui/uikit/main_button.dart';
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
-import 'package:device_information/device_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,12 +43,12 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        await AppMetrica.reportEventWithMap('paywall passed', {
-                          'subscrition': false,
-                          'chosen': 'nothing',
-                          'device info':
-                              await DeviceInformation.deviceIMEINumber
-                        });
+                        // await AppMetrica.reportEventWithMap('paywall passed', {
+                        //   'subscrition': false,
+                        //   'chosen': 'nothing',
+                        //   'device info':
+                        //       await DeviceInformation.deviceIMEINumber
+                        // });
                         await Navigator.push<Widget>(
                           context,
                           PageTransition(
@@ -151,14 +149,14 @@ class _PayWallScreenState extends State<PayWallScreen> {
 
   Future<void> navigateToMain() async {
     final geo = await GeoService.determinePosition();
-    unawaited(AppMetrica.reportEventWithMap('paywall passed', {
-      'subscrition': true,
-      'chosen': selected == 0 ? 'year subscritption' : 'month subscription',
-      'device info': await DeviceInformation.deviceIMEINumber,
-      'geolocation': {'alt': geo.altitude, 'longt': geo.longitude},
-      'device model': await DeviceInformation.deviceModel,
-      'date': DateTime.now().toString(),
-    }));
+    // unawaited(AppMetrica.reportEventWithMap('paywall passed', {
+    //   'subscrition': true,
+    //   'chosen': selected == 0 ? 'year subscritption' : 'month subscription',
+    //   'device info': await DeviceInformation.deviceIMEINumber,
+    //   'geolocation': {'alt': geo.altitude, 'longt': geo.longitude},
+    //   'device model': await DeviceInformation.deviceModel,
+    //   'date': DateTime.now().toString(),
+    // }));
     Navigator.push(
         context,
         PageTransition<Widget>(
