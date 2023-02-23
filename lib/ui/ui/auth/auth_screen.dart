@@ -179,9 +179,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         ],
                       ),
                     ),
-                    if (cubit.state.correct == true)
                       MainButton(
                         label: applocale.continu,
+                        isActive: state.correct==true,
                         onTap: () => cubit.navigateToReason(
                             context: context,
                             name: nameController.text,

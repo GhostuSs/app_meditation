@@ -8,8 +8,10 @@ class MainButton extends StatelessWidget {
     Key? key,
     this.onTap,
     this.width,
+    this.isActive,
     required this.label,
   }) : super(key: key);
+  final bool? isActive;
   final VoidCallback? onTap;
   final double? width;
   final String label;
@@ -17,7 +19,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: isActive!=true&&isActive!=null ? null :onTap,
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
       borderRadius: BorderRadius.circular(20.r),
@@ -25,14 +27,14 @@ class MainButton extends StatelessWidget {
         height: 53.h,
         width: width,
         decoration: BoxDecoration(
-          color: AppColors.black,
+          color: isActive!=null ? isActive==true ? AppColors.black : AppColors.darkGray.withOpacity(0.8) :AppColors.black,
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: Center(
           child: Text(
             label,
             style: AppTypography.mainStyle
-                .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w600,color: isActive!=null ? isActive==true ? AppColors.white : AppColors.white.withOpacity(0.8) :AppColors.white),
           ),
         ),
       ),

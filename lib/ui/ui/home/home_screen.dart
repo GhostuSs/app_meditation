@@ -29,19 +29,14 @@ class HomeScreen extends StatelessWidget {
               minimum: EdgeInsets.symmetric(horizontal: 30.w),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Hi, ${Hive.box<UserData>('user').values.first.name}',
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTypography.mainStyle.copyWith(
-                          fontSize: 33.w,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.white,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'Hi, ${Hive.box<UserData>('user').isNotEmpty==true ? Hive.box<UserData>('user').values.first.name : ''}',
+                    overflow: TextOverflow.clip,
+                    style: AppTypography.mainStyle.copyWith(
+                      fontSize: 33.w,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.white,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5, bottom: 70),
