@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
 import 'package:app_meditation/ui/res/app_theme.dart';
@@ -17,7 +19,8 @@ final appsFlyerOptions = AppsFlyerOptions(
     afDevKey: AppConfig.afDevKey,
     appId: AppConfig.appID,
     showDebug: true,
-    disableAdvertisingIdentifier: false, // Optional field
+    disableAdvertisingIdentifier: false,
+    // Optional field
     disableCollectASA: false);
 final appsflyer = AppsflyerSdk(appsFlyerOptions);
 
@@ -37,10 +40,10 @@ Future<void> main() async {
   if (Hive.box<bool>('onbseen').isEmpty) {
     await Hive.box<bool>('onbseen').put('onbseen', false);
     try {
-      await appsflyer.logEvent('first activation', <String, dynamic>{
+      unawaited(appsflyer.logEvent('first activation', <String, dynamic>{
         'deviceInfo': await DeviceInformation.deviceIMEINumber,
         'firstActivationDate': DateTime.now().toString(),
-      });
+      }));
     } catch (e) {
       debugPrint('log error: $e');
     }
@@ -65,7 +68,7 @@ class App extends StatelessWidget {
         builder: (context, child) => MaterialApp(
           theme: AppTheme.mainTheme,
           debugShowCheckedModeBanner: false,
-          title: 'Soulmates app',
+          title: 'Soulmates',
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -78,14 +81,16 @@ class App extends StatelessWidget {
               ? Hive.box<UserData>('user').isEmpty
                   ? OnboardingScreen()
                   : const AuthScreen()
-              : const HomeScreen(),
+              : Hive.box<UserData>('user').isEmpty
+                  ? const AuthScreen()
+                  : const HomeScreen(),
         ),
       );
 }
 
 Future<void> _initPlatformState() async {
   await OneSignal.shared.setAppId(AppConfig.oneSignalApiKey);
-  await OneSignal.shared
+  OneSignal.shared
       .promptUserForPushNotificationPermission()
       .then((accepted) {
     debugPrint(accepted.toString());

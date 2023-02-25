@@ -147,8 +147,8 @@ class _PayWallScreenState extends State<PayWallScreen> {
     );
   }
 
-  Future<void> navigateToMain() async {
-    final geo = await GeoService.determinePosition();
+  void navigateToMain(){
+    // final geo = await GeoService.determinePosition();
     // unawaited(AppMetrica.reportEventWithMap('paywall passed', {
     //   'subscrition': true,
     //   'chosen': selected == 0 ? 'year subscritption' : 'month subscription',

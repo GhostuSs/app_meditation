@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Hi, ${Hive.box<UserData>('user').isNotEmpty==true ? Hive.box<UserData>('user').values.first.name : ''}',
+                    'Hi, ${Hive.box<UserData>('user').isNotEmpty == true ? Hive.box<UserData>('user').values.first.name : ''}',
                     overflow: TextOverflow.clip,
                     style: AppTypography.mainStyle.copyWith(
                       fontSize: 33.w,

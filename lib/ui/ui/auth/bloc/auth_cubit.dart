@@ -37,12 +37,16 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  void switcher() {
+    emit(state.copyWith(checkPressed: !(state.checkPressed ?? false)));
+  }
+
   void check(
       {required String phone, required String mail, required String name}) {
     if (name.isNotEmpty &&
         mail.isNotEmpty &&
+        state.checkPressed == true &&
         phone.isNotEmpty &&
-        phone.length == 15 &&
         validator.validator.email(mail)) {
       emit(state.copyWith(correct: true));
     } else {
