@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:app_meditation/ui/ui/onboarding/bloc/onboarding_cubit.dart';
@@ -45,7 +47,8 @@ class OnboardingScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: 20.h),
+                        padding: EdgeInsets.only(
+                            bottom: Platform.isIOS ? 20.h : 10.h),
                         child: MainButton(
                           label: AppLocalizations.of(context)!.continu,
                           onTap: state.currInd == pages.length - 1
@@ -79,7 +82,10 @@ class OnboardingScreen extends StatelessWidget {
       padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.h),
       child: Column(
         children: [
-          Image.asset('assets/images/onb1img.png'),
+          Image.asset(
+            'assets/images/onb1img.png',
+            height: 395.h,
+          ),
           Text(
             'Improve your\nrelationship',
             textAlign: TextAlign.center,
@@ -187,12 +193,14 @@ class OnboardingScreen extends StatelessWidget {
       padding: EdgeInsets.only(left: 30.w, right: 30.w),
       child: Column(
         children: [
-          Image.asset('assets/images/onb5img.png'),
+          Image.asset(
+            'assets/images/onb5img.png',
+          ),
           Text(
             'Create & save\nmemories',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-              fontSize: 44.w,
+              fontSize: 38.w,
               fontWeight: FontWeight.w900,
             ),
           ),

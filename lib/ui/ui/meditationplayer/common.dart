@@ -49,7 +49,6 @@ class SeekBarState extends State<SeekBar> {
                 overlayShape: const RoundSliderOverlayShape(overlayRadius: 6.0),
                 activeTrackColor: AppColors.white.withOpacity(0.1),
                 trackShape: const RoundedRectSliderTrackShape(),
-                inactiveTrackColor: AppColors.white,
               ),
               child: ExcludeSemantics(
                 child: Slider(

@@ -33,8 +33,8 @@ class _ReasonScreenState extends State<ReasonScreen> {
             const BgDecoration(),
             Padding(
               padding: EdgeInsets.only(
-                left: 22.w,
-                right: 22.w,
+                left: 20.w,
+                right: 20.w,
                 top: 40.h,
               ),
               child: Column(

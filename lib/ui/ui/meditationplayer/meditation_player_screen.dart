@@ -51,7 +51,7 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
     } catch (e) {
       debugPrint('Error loading audio source: $e');
     }
-    _player.play();
+    await _player.play();
   }
 
   @override
@@ -186,11 +186,11 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
   String meditationFullName(String shortname) {
     switch (shortname) {
       case 'feelcalm':
-        return 'How to be calm and relaxed...';
+        return 'Relationship couching';
       case 'meditate':
-        return 'Meditate and be mindful...';
+        return 'Resolve conflicts';
       case 'sleepspace':
-        return 'Enjoy your sleep...';
+        return 'Date ideas';
       default:
         return '';
     }

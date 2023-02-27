@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:app_meditation/domain/geo_service/geo_service.dart';
 import 'package:app_meditation/generated/assets.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
@@ -67,14 +64,14 @@ class _PayWallScreenState extends State<PayWallScreen> {
                 ),
                 SvgPicture.asset(
                   Assets.imagesPaywall,
-                  height: 210.h,
+                  height: 197.h,
                 ),
                 Text(
                   applocale.trySoulmates,
                   textAlign: TextAlign.center,
                   style: AppTypography.mainStyle.copyWith(
                       fontWeight: FontWeight.w800,
-                      fontSize: 32.w,
+                      fontSize: 30.5.w,
                       color: AppColors.white),
                 ),
                 SizedBox(
@@ -133,7 +130,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 18.h,
                 ),
                 MainButton(
                   label: applocale.tryForFreeAndSubscribe,
@@ -147,7 +144,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
     );
   }
 
-  void navigateToMain(){
+  void navigateToMain() {
     // final geo = await GeoService.determinePosition();
     // unawaited(AppMetrica.reportEventWithMap('paywall passed', {
     //   'subscrition': true,

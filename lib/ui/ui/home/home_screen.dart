@@ -9,6 +9,7 @@ import 'package:app_meditation/ui/ui/home/uikit/home_button.dart';
 import 'package:app_meditation/ui/uikit/bg_decoration.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           const BgDecoration(),
           SafeArea(
-              minimum: EdgeInsets.symmetric(horizontal: 30.w),
+              minimum: EdgeInsets.symmetric(horizontal: 28.w),
               child: Column(
                 children: [
                   Text(
@@ -46,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                           child: InkWell(
                             onTap: () => showDialog<Widget>(
                               context: context,
-                              builder: (ctx) => BackdropFilter(
+                              builder: (context) => BackdropFilter(
                                   filter:
                                       ui.ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                                   child: Material(
@@ -120,9 +121,48 @@ class HomeScreen extends StatelessWidget {
                                                   ),
                                                 ),
                                                 InkWell(
-                                                  onTap: () async =>
-                                                      FlutterClipboard.copy(
-                                                          BaseUrls.shareLink),
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                    FlutterClipboard.copy(
+                                                      BaseUrls.shareLink,
+                                                    ).then(
+                                                      (value) =>
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                        SnackBar(
+                                                          action:
+                                                              SnackBarAction(
+                                                            label: 'Undo',
+                                                            textColor: Colors
+                                                                .redAccent,
+                                                            onPressed: () =>
+                                                                Clipboard
+                                                                    .setData(
+                                                              const ClipboardData(
+                                                                text: '',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          content: const Text(
+                                                            'link was coppied to clipboard',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 16),
+                                                          ),
+                                                          backgroundColor:
+                                                              AppColors.darkGray
+                                                                  .withOpacity(
+                                                            0.5,
+                                                          ),
+                                                          duration:
+                                                              const Duration(
+                                                                  seconds: 3),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
                                                   focusColor:
                                                       Colors.transparent,
                                                   highlightColor:
