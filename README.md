@@ -1,6 +1,7 @@
 # Soulmates app
 
 ## Mobile app on Flutter <img src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg" width="15" />
-![promo](https://user-images.githubusercontent.com/58935940/221558919-bfcba7ba-194f-4d43-8626-9f888ddbd4b5.png)
+![promo-min](https://user-images.githubusercontent.com/58935940/221559587-1cf84556-3569-4761-84cf-a5d397709a5f.png)
+
 
 
