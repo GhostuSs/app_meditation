@@ -1,18 +1,9 @@
-# app_meditation
+# Soulmates app
 
-Mobile app for iOS
+## Mobile app on Flutter <img src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg" width="15" />
+### Listen meditations and improve your life
+![promo-min](https://user-images.githubusercontent.com/58935940/221559587-1cf84556-3569-4761-84cf-a5d397709a5f.png)
 
-## Getting Started
+# Stack
+### Flutter SDK <img src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg" width="10" />, Dart , BLoC (Cubit), Hive, geolocator, OneSignal, AppsFlyer
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-# app_meditation
