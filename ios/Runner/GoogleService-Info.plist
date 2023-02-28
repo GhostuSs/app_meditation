@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>704866445628-lbu7go2c0k1kkqau0uknto0ase1ctrua.apps.googleusercontent.com</string>
+	<string>882735469427-r989d56m8hrc6mq6k61llcciutnkbrms.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.704866445628-lbu7go2c0k1kkqau0uknto0ase1ctrua</string>
+	<string>com.googleusercontent.apps.882735469427-r989d56m8hrc6mq6k61llcciutnkbrms</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBpymAAF3VX6Vn0UkTNeI4HFtZbAYR8qNY</string>
+	<string>AIzaSyCXzF3behH4PjpVd9bxP62BEiDg-oS1rQU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>704866445628</string>
+	<string>882735469427</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.maximmovchan.appMeditation</string>
+	<string>com.maximmovchan.soulmates</string>
 	<key>PROJECT_ID</key>
-	<string>app-meditation-a1fc7</string>
+	<string>soulmates-189e7</string>
 	<key>STORAGE_BUCKET</key>
-	<string>app-meditation-a1fc7.appspot.com</string>
+	<string>soulmates-189e7.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:704866445628:ios:5a1f05a11ccc2627549639</string>
+	<string>1:882735469427:ios:2682da669a6d0873062b06</string>
 </dict>
 </plist>

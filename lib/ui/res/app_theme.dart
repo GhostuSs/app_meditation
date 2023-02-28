@@ -27,8 +27,13 @@ abstract class AppTheme {
         activeTrackColor: AppColors.white,
         thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6.r),
       ),
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       inputDecorationTheme: InputDecorationTheme(
         focusColor: AppColors.purple,
+        hoverColor: Colors.transparent,
         hintStyle: AppTypography.mainStyle.copyWith(
             fontWeight: FontWeight.w500,
             fontSize: 18.w,

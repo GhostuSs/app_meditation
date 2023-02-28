@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  appsflyer_sdk:
-    dependency: "direct main"
-    description:
-      name: appsflyer_sdk
-      sha256: bba6e9302f4ebac2e45a1b149874fca8b340d145e4c1011286d4776bf6e9ad4c
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.9.3"
   archive:
     dependency: transitive
     description:
@@ -346,7 +338,7 @@ packages:
     source: hosted
     version: "0.5.1+12"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       sha256: fe30ac230f12f8836bb97e6e09197340d3c584526825b1746ea362a82e1e43f7
@@ -427,6 +419,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.6.1"
+  flutter_segment:
+    dependency: "direct main"
+    description:
+      name: flutter_segment
+      sha256: b8cabb4ebac4a554d56c14173d77a313936c9be86bf5de76b68dcce3bf8ac898
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.12.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -614,21 +614,13 @@ packages:
     source: hosted
     version: "0.6.5"
   json_annotation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: json_annotation
       sha256: c33da08e136c3df0190bd5bbe51ae1df4a7d96e7954d1d7249fea2968a72d317
       url: "https://pub.dev"
     source: hosted
     version: "4.8.0"
-  json_serializable:
-    dependency: "direct main"
-    description:
-      name: json_serializable
-      sha256: dadc08bd61f72559f938dd08ec20dbfec6c709bba83515085ea943d2078d187a
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.6.1"
   just_audio:
     dependency: "direct main"
     description:
@@ -669,14 +661,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  mask_text_input_formatter:
-    dependency: "direct main"
-    description:
-      name: mask_text_input_formatter
-      sha256: "19bb7809c3c2559277e95521b3ee421e1409eb2cc85efd2feb191696c92490f4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   matcher:
     dependency: transitive
     description:
@@ -766,7 +750,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: dcea5feb97d8abf90cab9e9030b497fb7c3cbf26b7a1fe9e3ef7dcb0a1ddec95

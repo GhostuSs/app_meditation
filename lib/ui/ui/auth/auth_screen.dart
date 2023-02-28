@@ -196,26 +196,6 @@ class _AuthScreenState extends State<AuthScreen> {
                               phone: phoneController.text,
                               mail: mailController.text),
                         ),
-                        const Spacer(),
-                        RichText(
-                          text: TextSpan(
-                              text: applocale.haveAcc,
-                              style: AppTypography.mainStyle.copyWith(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12.w,
-                                color: AppColors.white,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text: applocale.signIn,
-                                  style: AppTypography.mainStyle.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12.w,
-                                    color: AppColors.black,
-                                  ),
-                                )
-                              ]),
-                        )
                       ],
                     ),
                   )

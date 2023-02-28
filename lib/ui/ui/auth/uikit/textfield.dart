@@ -3,7 +3,6 @@ import 'package:app_meditation/ui/res/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class RawTextField extends StatelessWidget {
   const RawTextField({
@@ -15,7 +14,7 @@ class RawTextField extends StatelessWidget {
     required this.hint,
     required this.icon,
     this.iconHeight,
-    this.mask,
+    // this.mask,
     this.maxLength,
     this.action,
     this.focusNode,
@@ -23,7 +22,7 @@ class RawTextField extends StatelessWidget {
   }) : super(key: key);
   final bool? filled;
   final String icon;
-  final MaskTextInputFormatter? mask;
+  // final MaskTextInputFormatter? mask;
   final VoidCallback? onEditComplete;
   final TextInputAction? action;
   final String hint;
@@ -41,7 +40,7 @@ class RawTextField extends StatelessWidget {
         focusNode: focusNode,
         keyboardType: textInputType,
         textInputAction: action,
-        inputFormatters: [if (mask != null) mask!],
+        // inputFormatters: [if (mask != null) mask!],
         style: AppTypography.mainStyle.copyWith(
             fontWeight: FontWeight.w500,
             fontSize: 18.w,
