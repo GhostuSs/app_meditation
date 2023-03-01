@@ -1,14 +1,5 @@
 PODS:
-  - Amplitude (8.15.1):
-    - AnalyticsConnector (~> 1.0.0)
-  - Analytics (4.1.6)
-  - AnalyticsConnector (1.0.1)
-  - AppsFlyerFramework (6.8.1):
-    - AppsFlyerFramework/Main (= 6.8.1)
-  - AppsFlyerFramework/Main (6.8.1)
   - audio_session (0.0.1):
-    - Flutter
-  - device_information (0.0.1):
     - Flutter
   - Firebase/Analytics (10.3.0):
     - Firebase/Core
@@ -54,11 +45,6 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
   - Flutter (1.0.0)
-  - flutter_segment (3.12.1):
-    - Analytics (= 4.1.6)
-    - Flutter
-    - Segment-Amplitude (= 3.3.2)
-    - segment-appsflyer-ios (= 6.8.0)
   - geolocator_apple (1.2.0):
     - Flutter
   - GoogleAppMeasurement (10.3.0):
@@ -124,25 +110,14 @@ PODS:
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.1.1)
-  - Segment-Amplitude (3.3.2):
-    - Amplitude (~> 8.3)
-    - Analytics
-  - segment-appsflyer-ios (6.8.0):
-    - Analytics
-    - segment-appsflyer-ios/Main (= 6.8.0)
-  - segment-appsflyer-ios/Main (6.8.0):
-    - Analytics
-    - AppsFlyerFramework (~> 6.8.0)
   - url_launcher_ios (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
-  - device_information (from `.symlinks/plugins/device_information/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
-  - flutter_segment (from `.symlinks/plugins/flutter_segment/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
@@ -152,10 +127,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Amplitude
-    - Analytics
-    - AnalyticsConnector
-    - AppsFlyerFramework
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -166,22 +137,16 @@ SPEC REPOS:
     - nanopb
     - OneSignalXCFramework
     - PromisesObjC
-    - Segment-Amplitude
-    - segment-appsflyer-ios
 
 EXTERNAL SOURCES:
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
-  device_information:
-    :path: ".symlinks/plugins/device_information/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
-  flutter_segment:
-    :path: ".symlinks/plugins/flutter_segment/ios"
   geolocator_apple:
     :path: ".symlinks/plugins/geolocator_apple/ios"
   just_audio:
@@ -194,12 +159,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  Amplitude: 11379691860b3f9ec44808cec5dc0ea532295bd5
-  Analytics: eefe524436f904b8bb3f8c8c3425280e43b34efc
-  AnalyticsConnector: eccd7e1cd3dd18e6bd09ac2506e37d4ed43ba3f4
-  AppsFlyerFramework: a664325124485223296354b4eec335f5340a6df8
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
-  device_information: d652f6dcea86bdc5300ffd495486de1d5047bf4f
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   firebase_analytics: 4f57c422c9c6225cd5ddd5fca28f92bde5fb21b5
   firebase_core: 128d8c43c3a453a4a67463314fc3761bedff860b
@@ -208,7 +168,6 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 29b76f784d607df8b2a1259d73c3f04f1210137b
   FirebaseInstallations: e2f26126089dcf41e215f7b8925af8d953c7d602
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_segment: 367b7d9f7d74b3875198524ff4d24c381d93e317
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
   GoogleAppMeasurement: c7d6fff39bf2d829587d74088d582e32d75133c3
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
@@ -218,8 +177,6 @@ SPEC CHECKSUMS:
   OneSignalXCFramework: 75844c29607ca95e6176f6f21257b4382c7fdbfb
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  Segment-Amplitude: 6c1e59c8c278a21029ba7a6a788fcb31b9233a2c
-  segment-appsflyer-ios: 9b84c1b7f94bb7a3c5826c9214cd0630b831e208
   url_launcher_ios: fb12c43172927bb5cf75aeebd073f883801f1993
 
 PODFILE CHECKSUM: d0811c0571dca93ad5c5e74c7c7e05050886299a

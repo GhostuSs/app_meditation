@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
@@ -30,6 +31,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _initPlatformState();
   await Hive.initFlutter();
+  await analytics.logAppOpen();
   Hive.registerAdapter<UserData>(UserDataAdapter());
   await Hive.openBox<UserData>('user');
   await Hive.openBox<bool>('onbseen');
@@ -77,12 +79,12 @@ Future<void> _initPlatformState() async {
         debugPrint(accepted.toString(),);
       }),),);
   fbApp=await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   analytics=FirebaseAnalytics.instance;
   try{
     // await analytics.isSupported().then((value) => debugPrint('analytics : $value'));
-    await analytics.logAppOpen();
+    // await analytics.logEvent(name: 'test2',parameters: {'parameter1':'testov'});
   }catch(e){
     debugPrint(e.toString());
   }

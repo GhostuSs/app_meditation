@@ -36,10 +36,10 @@ dependencies:
   regexed_validator: ^2.0.0+1
   clipboard: ^0.1.3
   #  flutter_facebook_sdk: ^1.0.0
-  device_information: ^0.0.4
+#  device_information: ^0.0.4
   firebase_analytics: ^10.1.4
   keyboard_actions: ^4.2.0
-  flutter_segment: ^3.12.1
+#  flutter_segment: ^3.12.1
   firebase_core: ^2.7.0
 
 dev_dependencies:
