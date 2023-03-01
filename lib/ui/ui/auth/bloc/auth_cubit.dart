@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_meditation/domain/user_model/user_model.dart';
+import 'package:app_meditation/main.dart';
 import 'package:app_meditation/ui/ui/reasons/reason_screen.dart';
 // import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:bloc/bloc.dart';
@@ -19,15 +20,21 @@ class AuthCubit extends Cubit<AuthState> {
       required String name,
       required String phone,
       required String mail}) async {
+    final user = Hive.box<UserData>('user').values.first;
+    user.authcompleted = true;
+    user.name = name;
+    user.phone=phone;
+    user.mail=mail;
     await Hive.box<UserData>('user')
-        .put('user', UserData(name: name, phone: phone, mail: mail));
-    // unawaited(AppMetrica.reportEventWithMap('user authenticated', {
-    //   'deviceInfo': await DeviceInformation.deviceIMEINumber,
-    //   'action done at': DateTime.now().toString(),
-    //   'phone': phone,
-    //   'e-mail': mail,
-    //   'name': name
-    // }));
+        .put('user', user);
+    unawaited(analytics.logEvent('user_registered',eventProperties: <String,dynamic>{
+      'name':name,
+      'phone':phone,
+      'mail':mail,
+      'date_of_signup':DateTime.now().toString(),
+      'timezone':DateTime.now().timeZoneName
+    }));
+
     await Navigator.push<Widget>(
       context,
       PageTransition(

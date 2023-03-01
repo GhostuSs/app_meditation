@@ -52,7 +52,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: MainButton(
                           label: AppLocalizations.of(context)!.continu,
                           onTap: state.currInd == pages.length - 1
-                              ? () => cubit.navigateToHome(context: context)
+                              ? () => cubit.navigateToAuth(context: context)
                               : () async {
                                   await pageController.nextPage(
                                     duration: duration,

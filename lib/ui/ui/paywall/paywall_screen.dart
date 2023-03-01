@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:app_meditation/generated/assets.dart';
+import 'package:app_meditation/main.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:app_meditation/ui/ui/home/home_screen.dart';
@@ -10,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import 'package:page_transition/page_transition.dart';
 
 class PayWallScreen extends StatefulWidget {
@@ -40,12 +44,11 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        // await AppMetrica.reportEventWithMap('paywall passed', {
-                        //   'subscrition': false,
-                        //   'chosen': 'nothing',
-                        //   'device info':
-                        //       await DeviceInformation.deviceIMEINumber
-                        // });
+                        unawaited(analytics.logEvent('subsription',eventProperties: <String,dynamic>{
+                          'subscription':'skipped',
+                          'date':DateTime.now().toString(),
+                          'timezone':DateTime.now().timeZoneName
+                        }));
                         await Navigator.push<Widget>(
                           context,
                           PageTransition(
@@ -144,16 +147,15 @@ class _PayWallScreenState extends State<PayWallScreen> {
     );
   }
 
-  void navigateToMain() {
-    // final geo = await GeoService.determinePosition();
-    // unawaited(AppMetrica.reportEventWithMap('paywall passed', {
-    //   'subscrition': true,
-    //   'chosen': selected == 0 ? 'year subscritption' : 'month subscription',
-    //   'device info': await DeviceInformation.deviceIMEINumber,
-    //   'geolocation': {'alt': geo.altitude, 'longt': geo.longitude},
-    //   'device model': await DeviceInformation.deviceModel,
-    //   'date': DateTime.now().toString(),
-    // }));
+  Future<void> navigateToMain() async {
+    unawaited(analytics.logEvent('subscription',eventProperties: <String,dynamic>{
+      'subscription':'chosen',
+      'type': selected==0 ? 'Annual' : 'Monthly',
+      'date':DateTime.now().toString(),
+      'timezone':DateTime.now().timeZoneName,
+    }));
+    await Hive.box<bool>('premium').put('premium',true);
+
     Navigator.push(
         context,
         PageTransition<Widget>(

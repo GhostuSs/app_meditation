@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final applocale = AppLocalizations.of(context)!;
-    // print(Hive.box<UserData>('user').values.first.toJson());
     return Scaffold(
       backgroundColor: AppColors.purple,
       body: Stack(

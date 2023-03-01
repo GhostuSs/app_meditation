@@ -21,13 +21,16 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       choose: (fields[2] as List?)?.cast<String>(),
       phone: fields[1] as String?,
       mail: fields[3] as String?,
+      authcompleted: fields[6] as bool?,
+      firstActivation: fields[4] as bool?,
+      onbpassed: fields[5] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserData obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +38,13 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       ..writeByte(2)
       ..write(obj.choose)
       ..writeByte(3)
-      ..write(obj.mail);
+      ..write(obj.mail)
+      ..writeByte(4)
+      ..write(obj.firstActivation)
+      ..writeByte(5)
+      ..write(obj.onbpassed)
+      ..writeByte(6)
+      ..write(obj.authcompleted);
   }
 
   @override
@@ -48,22 +57,3 @@ class UserDataAdapter extends TypeAdapter<UserData> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
-      name: json['name'] as String?,
-      choose:
-          (json['choose'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      phone: json['phone'] as String?,
-      mail: json['mail'] as String?,
-    );
-
-Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
-      'name': instance.name,
-      'phone': instance.phone,
-      'choose': instance.choose,
-      'mail': instance.mail,
-    };

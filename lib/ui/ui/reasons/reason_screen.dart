@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:app_meditation/domain/user_model/user_model.dart';
+import 'package:app_meditation/main.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
 import 'package:app_meditation/ui/ui/personalizing/personalizing_screen.dart';
@@ -105,13 +108,11 @@ class _ReasonScreenState extends State<ReasonScreen> {
                             Hive.box<UserData>('user').values.first;
                         user.choose = selected;
                         await Hive.box<UserData>('user').put('user', user);
-                        // AppMetrica.reportEventWithMap('user authenticated', {
-                        //   'deviceInfo':
-                        //       await DeviceInformation.deviceIMEINumber,
-                        //   'action done at': DateTime.now().toString(),
-                        //   'userdata':
-                        //       Hive.box<UserData>('user').values.first.toJson()
-                        // });
+                        unawaited(analytics.logEvent('personalizings_chosen',eventProperties: <String,dynamic>{
+                          'timezone':DateTime.now().timeZoneName,
+                          'date':DateTime.now().toString(),
+                          'personalizings':selected
+                        }));
                         Navigator.push(
                           context,
                           PageTransition<Widget>(

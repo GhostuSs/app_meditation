@@ -3,13 +3,13 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsAudioGen {
   const $AssetsAudioGen();
@@ -91,6 +91,9 @@ class $AssetsImagesGen {
   AssetGenImage get meditationimg =>
       const AssetGenImage('assets/images/meditationimg.png');
 
+  /// File path: assets/images/mute.svg
+  SvgGenImage get mute => const SvgGenImage('assets/images/mute.svg');
+
   /// File path: assets/images/next.svg
   SvgGenImage get next => const SvgGenImage('assets/images/next.svg');
 
@@ -131,6 +134,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/share.svg
   SvgGenImage get share => const SvgGenImage('assets/images/share.svg');
 
+  /// File path: assets/images/volumeon.svg
+  SvgGenImage get volumeon => const SvgGenImage('assets/images/volumeon.svg');
+
   /// List of all assets
   List<dynamic> get values => [
         appIcon,
@@ -140,6 +146,7 @@ class $AssetsImagesGen {
         heartDamaged,
         mail,
         meditationimg,
+        mute,
         next,
         onb1img,
         onb2img,
@@ -152,7 +159,8 @@ class $AssetsImagesGen {
         phone,
         play,
         prev,
-        share
+        share,
+        volumeon
       ];
 }
 
@@ -245,13 +253,14 @@ class SvgGenImage {
     AlignmentGeometry alignment = Alignment.center,
     bool allowDrawingOutsideViewBox = false,
     WidgetBuilder? placeholderBuilder,
-    Color? color,
-    BlendMode colorBlendMode = BlendMode.srcIn,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    Clip clipBehavior = Clip.hardEdge,
-    bool cacheColorFilter = false,
-    SvgTheme? theme,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated Clip? clipBehavior,
+    @deprecated bool cacheColorFilter = false,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -265,13 +274,12 @@ class SvgGenImage {
       alignment: alignment,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      color: color,
-      colorBlendMode: colorBlendMode,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      clipBehavior: clipBehavior,
-      cacheColorFilter: cacheColorFilter,
       theme: theme,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      cacheColorFilter: cacheColorFilter,
     );
   }
 

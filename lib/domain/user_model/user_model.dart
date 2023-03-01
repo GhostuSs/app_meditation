@@ -1,9 +1,7 @@
 import 'package:hive/hive.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
 
-@JsonSerializable()
 @HiveType(typeId: 1)
 class UserData extends HiveObject {
   UserData({
@@ -11,10 +9,10 @@ class UserData extends HiveObject {
     this.choose,
     this.phone,
     this.mail,
+    this.authcompleted,
+    this.firstActivation,
+    this.onbpassed
   });
-
-  factory UserData.fromJson(Map<String, dynamic> json) =>
-      _$UserDataFromJson(json);
 
   @HiveField(0)
   String? name;
@@ -24,7 +22,10 @@ class UserData extends HiveObject {
   List<String>? choose;
   @HiveField(3)
   String? mail;
-
-  /// Connect the generated [_$UserDataToJson] function to the `toJson` method.
-  Map<String, dynamic> toJson() => _$UserDataToJson(this);
+  @HiveField(4)
+  bool? firstActivation;
+  @HiveField(5)
+  bool? onbpassed;
+  @HiveField(6)
+  bool? authcompleted;
 }
