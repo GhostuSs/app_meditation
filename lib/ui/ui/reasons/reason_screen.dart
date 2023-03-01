@@ -108,11 +108,12 @@ class _ReasonScreenState extends State<ReasonScreen> {
                             Hive.box<UserData>('user').values.first;
                         user.choose = selected;
                         await Hive.box<UserData>('user').put('user', user);
-                        unawaited(analytics.logEvent('personalizings_chosen',eventProperties: <String,dynamic>{
-                          'timezone':DateTime.now().timeZoneName,
-                          'date':DateTime.now().toString(),
-                          'personalizings':selected
-                        }));
+                        unawaited(analytics.logEvent('personalizings_chosen',
+                            eventProperties: <String, dynamic>{
+                              'timezone': DateTime.now().timeZoneName,
+                              'date': DateTime.now().toString(),
+                              'personalizings': selected
+                            }));
                         Navigator.push(
                           context,
                           PageTransition<Widget>(

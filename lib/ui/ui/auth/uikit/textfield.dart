@@ -22,6 +22,7 @@ class RawTextField extends StatelessWidget {
   }) : super(key: key);
   final bool? filled;
   final String icon;
+
   // final MaskTextInputFormatter? mask;
   final VoidCallback? onEditComplete;
   final TextInputAction? action;

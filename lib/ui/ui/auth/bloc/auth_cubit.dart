@@ -23,16 +23,16 @@ class AuthCubit extends Cubit<AuthState> {
     final user = Hive.box<UserData>('user').values.first;
     user.authcompleted = true;
     user.name = name;
-    user.phone=phone;
-    user.mail=mail;
-    await Hive.box<UserData>('user')
-        .put('user', user);
-    unawaited(analytics.logEvent('user_registered',eventProperties: <String,dynamic>{
-      'name':name,
-      'phone':phone,
-      'mail':mail,
-      'date_of_signup':DateTime.now().toString(),
-      'timezone':DateTime.now().timeZoneName
+    user.phone = phone;
+    user.mail = mail;
+    await Hive.box<UserData>('user').put('user', user);
+    unawaited(analytics
+        .logEvent('user_registered', eventProperties: <String, dynamic>{
+      'name': name,
+      'phone': phone,
+      'mail': mail,
+      'date_of_signup': DateTime.now().toString(),
+      'timezone': DateTime.now().timeZoneName
     }));
 
     await Navigator.push<Widget>(

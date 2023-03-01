@@ -4,15 +4,14 @@ part 'user_model.g.dart';
 
 @HiveType(typeId: 1)
 class UserData extends HiveObject {
-  UserData({
-    this.name,
-    this.choose,
-    this.phone,
-    this.mail,
-    this.authcompleted,
-    this.firstActivation,
-    this.onbpassed
-  });
+  UserData(
+      {this.name,
+      this.choose,
+      this.phone,
+      this.mail,
+      this.authcompleted,
+      this.firstActivation,
+      this.onbpassed});
 
   @HiveField(0)
   String? name;

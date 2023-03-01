@@ -29,12 +29,13 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   Future<void> navigateToAuth({required BuildContext context}) async {
     await Hive.box<bool>('onbseen').put('onbseen', true);
     final user = Hive.box<UserData>('user').values.first;
-    user.onbpassed=true;
+    user.onbpassed = true;
     await Hive.box<UserData>('user').put('user', user);
-    unawaited(analytics.logEvent('onboarding_passed',eventProperties: <String,dynamic>{
-      'date':DateTime.now().toString(),
-      'timezone':DateTime.now().timeZoneName
-    }));
+    unawaited(analytics.logEvent('onboarding_passed',
+        eventProperties: <String, dynamic>{
+          'date': DateTime.now().toString(),
+          'timezone': DateTime.now().timeZoneName
+        }));
     Navigator.push<Widget>(
       context,
       PageTransition(

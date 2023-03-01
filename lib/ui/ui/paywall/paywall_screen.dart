@@ -44,11 +44,12 @@ class _PayWallScreenState extends State<PayWallScreen> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        unawaited(analytics.logEvent('subsription',eventProperties: <String,dynamic>{
-                          'subscription':'skipped',
-                          'date':DateTime.now().toString(),
-                          'timezone':DateTime.now().timeZoneName
-                        }));
+                        unawaited(analytics.logEvent('subsription',
+                            eventProperties: <String, dynamic>{
+                              'subscription': 'skipped',
+                              'date': DateTime.now().toString(),
+                              'timezone': DateTime.now().timeZoneName
+                            }));
                         await Navigator.push<Widget>(
                           context,
                           PageTransition(
@@ -148,13 +149,14 @@ class _PayWallScreenState extends State<PayWallScreen> {
   }
 
   Future<void> navigateToMain() async {
-    unawaited(analytics.logEvent('subscription',eventProperties: <String,dynamic>{
-      'subscription':'chosen',
-      'type': selected==0 ? 'Annual' : 'Monthly',
-      'date':DateTime.now().toString(),
-      'timezone':DateTime.now().timeZoneName,
+    unawaited(
+        analytics.logEvent('subscription', eventProperties: <String, dynamic>{
+      'subscription': 'chosen',
+      'type': selected == 0 ? 'Annual' : 'Monthly',
+      'date': DateTime.now().toString(),
+      'timezone': DateTime.now().timeZoneName,
     }));
-    await Hive.box<bool>('premium').put('premium',true);
+    await Hive.box<bool>('premium').put('premium', true);
 
     Navigator.push(
         context,
