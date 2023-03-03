@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:amplitude_flutter/amplitude.dart';
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
@@ -7,6 +7,7 @@ import 'package:app_meditation/ui/res/app_theme.dart';
 import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
 import 'package:app_meditation/ui/ui/home/home_screen.dart';
 import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
+import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -92,8 +93,11 @@ Future<void> _initPlatformState() async {
           }),
         ),
   );
+  // await OneSignal.shared.setLogLevel(OSLogLevel.info, OSLogLevel.info);
   try {
     analytics = Amplitude.getInstance(instanceName: 'soulmates');
+    final appsFlyerOptions = AppsFlyerOptions(afDevKey: AppConfig.afDevKey,appId: Platform.isIOS ? '6446036639' : 'com.maximmovchan.app_meditation');
+    unawaited(AppsflyerSdk(appsFlyerOptions).initSdk(registerConversionDataCallback: true,registerOnAppOpenAttributionCallback: true,registerOnDeepLinkingCallback: true));
     final Map<String, dynamic> appOpenedEvent = <String, dynamic>{
       'opened_at': DateTime.now().toString(),
       'auth_completed': Hive.box<UserData>('user').values.first.authcompleted,
