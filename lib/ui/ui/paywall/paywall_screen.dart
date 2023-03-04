@@ -36,7 +36,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
           const BgDecoration(),
           SafeArea(
             bottom: false,
-            minimum: EdgeInsets.symmetric(horizontal: 19.w),
+            minimum: const EdgeInsets.symmetric(horizontal: 19),
             child: Column(
               children: [
                 Row(
@@ -61,21 +61,21 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       child: Icon(
                         Icons.clear,
                         color: AppColors.white,
-                        size: 20.w,
+                        size: 20.h,
                       ),
                     ),
                   ],
                 ),
                 SvgPicture.asset(
                   Assets.imagesPaywall,
-                  height: 197.h,
+                  height: MediaQuery.of(context).size.height/4.5,
                 ),
                 Text(
                   applocale.trySoulmates,
                   textAlign: TextAlign.center,
                   style: AppTypography.mainStyle.copyWith(
                       fontWeight: FontWeight.w800,
-                      fontSize: 30.5.w,
+                      fontSize: 30.5.sp,
                       color: AppColors.white),
                 ),
                 SizedBox(
@@ -100,7 +100,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       style: AppTypography.mainStyle.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.white,
-                        fontSize: 14.5.w,
+                        fontSize: 14.5.sp,
                       ),
                     )
                   ],

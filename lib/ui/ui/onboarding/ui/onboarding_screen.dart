@@ -34,13 +34,13 @@ class OnboardingScreen extends StatelessWidget {
                       children: [
                         Expanded(
                             child: PageView.builder(
-                          itemCount: pages.length,
+                          itemCount: pages(context).length,
                           controller: pageController,
                           onPageChanged: (index) {
                             cubit.changePage(index: index);
                             // pageController.jumpToPage(index);
                           },
-                          itemBuilder: (_, index) => pages[index],
+                          itemBuilder: (_, index) => pages(context)[index],
                         )),
                       ],
                     ),
@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                             bottom: Platform.isIOS ? 20.h : 10.h),
                         child: MainButton(
                           label: AppLocalizations.of(context)!.continu,
-                          onTap: state.currInd == pages.length - 1
+                          onTap: state.currInd == pages(context).length - 1
                               ? () => cubit.navigateToAuth(context: context)
                               : () async {
                                   await pageController.nextPage(
@@ -77,34 +77,35 @@ class OnboardingScreen extends StatelessWidget {
     AppColors.green
   ];
 
-  static List<Widget> pages = [
+  List<Widget> pages(BuildContext context)=>[
     Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.h),
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 25.h),
       child: Column(
         children: [
           Image.asset(
             'assets/images/onb1img.png',
-            height: 395.h,
+            height: MediaQuery.of(context).size.height/2,
           ),
           Text(
             'Improve your\nrelationship',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-              fontSize: 44.w,
+              fontSize: 44.sp,
               fontWeight: FontWeight.w900,
             ),
           ),
+          const SizedBox(height: 16,),
           Text(
             'Share moments. Be mindful and\nlearn your partner. Be happier\ntogether',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-                fontSize: 17.w, fontWeight: FontWeight.w300, height: 1.1.h),
+                fontSize: 17.sp, fontWeight: FontWeight.w300),
           ),
         ],
       ),
     ),
     Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 25.h),
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 40.h),
       child: Stack(
         children: [
           Align(
@@ -113,46 +114,43 @@ class OnboardingScreen extends StatelessWidget {
               'Play & Learn\nabout your\npartner',
               textAlign: TextAlign.center,
               style: AppTypography.mainStyle.copyWith(
-                fontSize: 40.w,
+                fontSize: 40.sp,
                 fontWeight: FontWeight.w900,
+                height: 0.9
               ),
             ),
           ),
           Positioned(
-            top: 168.h,
-            child: Image.asset(
-              'assets/images/onb2img.png',
-              width: 330.w,
-            ),
-          )
+            bottom: -80,
+              child: Image.asset(
+                'assets/images/onb2img.png',
+                height: MediaQuery.of(context).size.height*2/2.5,
+                width: MediaQuery.of(context).size.width*0.9,
+              ),
+          ),
         ],
       ),
     ),
     Stack(
+      alignment: Alignment.center,
       children: [
         Positioned(
-          top: -10.h,
           left: -10.w,
+          top: -10.h,
           child: Image.asset(
             'assets/images/onb3img.png',
-            height: 420.h,
+            height: MediaQuery.of(context).size.height/1.75,
           ),
         ),
         Positioned(
-          bottom: 100.h,
-          left: 56.w,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Improve your\nrelationship.\nBe mindful.',
-                textAlign: TextAlign.center,
-                style: AppTypography.mainStyle.copyWith(
-                  fontSize: 40.w,
-                  fontWeight: FontWeight.w900,
-                ),
-              )
-            ],
+          top: MediaQuery.of(context).size.height*0.55,
+          child: Text(
+            'Improve your\nrelationship.\nBe mindful.',
+            textAlign: TextAlign.center,
+            style: AppTypography.mainStyle.copyWith(
+              fontSize: 40.sp,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         )
       ],
@@ -168,39 +166,42 @@ class OnboardingScreen extends StatelessWidget {
                 'Chat &\nhave fun',
                 textAlign: TextAlign.center,
                 style: AppTypography.mainStyle.copyWith(
-                  fontSize: 40.w,
+                  fontSize: 40.sp,
                   fontWeight: FontWeight.w900,
+                  height: 0.9
                 ),
               ),
               Text(
                 'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
                 textAlign: TextAlign.center,
                 style: AppTypography.mainStyle
-                    .copyWith(fontSize: 16.w, fontWeight: FontWeight.w300),
+                    .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w300,),
               ),
             ]),
           ),
           Positioned(
-              top: 120.h,
+              bottom: 40.h,
               child: Image.asset(
                 'assets/images/onb4img.png',
-                width: 370.w,
-              )),
+                height: MediaQuery.of(context).size.height/1.65,
+              ),),
         ],
       ),
     ),
     Padding(
-      padding: EdgeInsets.only(left: 30.w, right: 30.w),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: Column(
         children: [
           Image.asset(
             'assets/images/onb5img.png',
+            height: MediaQuery.of(context).size.height*0.6,
+            // width: MediaQuery.of(context).size.width,
           ),
           Text(
             'Create & save\nmemories',
             textAlign: TextAlign.center,
             style: AppTypography.mainStyle.copyWith(
-              fontSize: 38.w,
+              fontSize: 38.sp,
               fontWeight: FontWeight.w900,
             ),
           ),

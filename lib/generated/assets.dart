@@ -7,8 +7,7 @@ class Assets {
   static const String audioSleepspace = 'assets/audio/sleepspace.mp3';
   static const String fontsInterBold = 'assets/fonts/Inter-Bold.ttf';
   static const String fontsInterExtraBold = 'assets/fonts/Inter-ExtraBold.ttf';
-  static const String fontsInterExtraLight =
-      'assets/fonts/Inter-ExtraLight.ttf';
+  static const String fontsInterExtraLight = 'assets/fonts/Inter-ExtraLight.ttf';
   static const String fontsInterLight = 'assets/fonts/Inter-Light.ttf';
   static const String fontsInterMedium = 'assets/fonts/Inter-Medium.ttf';
   static const String fontsInterRegular = 'assets/fonts/Inter-Regular.ttf';
@@ -35,4 +34,5 @@ class Assets {
   static const String imagesPrev = 'assets/images/prev.svg';
   static const String imagesShare = 'assets/images/share.svg';
   static const String imagesVolumeon = 'assets/images/volumeon.svg';
+
 }

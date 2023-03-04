@@ -18,13 +18,13 @@ class ReasonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(vertical: 4.h),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(10.r),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 18.w),
-            constraints: BoxConstraints.expand(height: 52.h),
+            constraints: BoxConstraints.expand(height: 54.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 color: isSelected ? AppColors.white : Colors.transparent,
@@ -34,7 +34,7 @@ class ReasonCard extends StatelessWidget {
                 Text(
                   iconSelector(),
                   style: TextStyle(
-                    fontSize: 26.w,
+                    fontSize: 25.sp,
                   ),
                 ),
                 const SizedBox(
@@ -46,7 +46,7 @@ class ReasonCard extends StatelessWidget {
                     text: TextSpan(
                       text: label,
                       style: AppTypography.mainStyle.copyWith(
-                        fontSize: 16.w,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w500,
                         color: isSelected ? AppColors.black : AppColors.white,
                       ),

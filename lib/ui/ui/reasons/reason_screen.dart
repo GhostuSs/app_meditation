@@ -35,10 +35,10 @@ class _ReasonScreenState extends State<ReasonScreen> {
           children: [
             const BgDecoration(),
             Padding(
-              padding: EdgeInsets.only(
-                left: 20.w,
-                right: 20.w,
-                top: 40.h,
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 30,
               ),
               child: Column(
                 children: [
@@ -47,13 +47,13 @@ class _ReasonScreenState extends State<ReasonScreen> {
                     text: TextSpan(
                       text: applocale.reasonTitle,
                       style: AppTypography.mainStyle.copyWith(
-                        fontSize: 34.w,
+                        fontSize: 30.sp,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10.h,
+                  const SizedBox(
+                    height: 10,
                   ),
                   ReasonCard(
                     label: applocale.completeQuizes,

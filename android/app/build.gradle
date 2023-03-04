@@ -88,4 +88,4 @@ dependencies {
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 }
 
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+//apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'

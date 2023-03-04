@@ -28,11 +28,8 @@ class SubscribeWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(10.r),
       child: Container(
-        constraints: BoxConstraints.expand(
-          width: 135.w,
-          height: 110.h,
-        ),
-        padding: const EdgeInsets.only(top: 10),
+        width: 135.w,
+        padding: const EdgeInsets.only(top: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: isSelected ? AppColors.white : Colors.transparent,
@@ -41,35 +38,40 @@ class SubscribeWidget extends StatelessWidget {
               : Border.all(color: AppColors.white),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               header,
               style: AppTypography.mainStyle.copyWith(
-                fontSize: 16.w,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 color: isSelected ? AppColors.black : AppColors.white,
               ),
             ),
-            Text(
-              '\$$price',
-              style: AppTypography.mainStyle.copyWith(
-                fontSize: 31.w,
-                fontWeight: FontWeight.w800,
-                color: isSelected ? AppColors.purple : AppColors.white,
-              ),
+            Column(
+              mainAxisSize:MainAxisSize.min,
+              children: [
+                Text(
+                  '\$$price',
+                  style: AppTypography.mainStyle.copyWith(
+                    fontSize: 28.sp,
+                    fontWeight: FontWeight.w800,
+                    color: isSelected ? AppColors.purple : AppColors.white,
+                  ),
+                ),
+                Text(
+                  footer,
+                  style: AppTypography.mainStyle.copyWith(
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: isSelected ? AppColors.black : AppColors.white,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              footer,
-              style: AppTypography.mainStyle.copyWith(
-                fontSize: 12.w,
-                fontWeight: FontWeight.w300,
-                color: isSelected ? AppColors.black : AppColors.white,
-              ),
-            ),
-            const Spacer(),
-            if (bestValue == true && isSelected)
-              Container(
-                width: 116,
+            const SizedBox(height: 11,),
+            bestValue == true && isSelected ?  Container(
+                width: 116.w,
                 height: 16.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -83,12 +85,12 @@ class SubscribeWidget extends StatelessWidget {
                     applocale.best,
                     style: AppTypography.mainStyle.copyWith(
                       fontWeight: FontWeight.w300,
-                      fontSize: 12.w,
+                      fontSize: 11.5.sp,
                       color: AppColors.white,
                     ),
                   ),
                 ),
-              )
+              ) : SizedBox(height: 16.h,)
           ],
         ),
       ),

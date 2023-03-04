@@ -114,14 +114,16 @@ class _AuthScreenState extends State<AuthScreen> {
                                   color: AppColors.white,
                                   borderRadius: BorderRadius.circular(5.r),
                                 ),
-                                child: Checkbox(
+                                child: Transform.scale(
+                                  scale: 0.9.h,
+                                  child: Checkbox(
                                   value: state.checkPressed ?? true,
                                   onChanged: (val) => cubit.switcher(),
                                   fillColor: MaterialStateProperty.all<Color>(
                                     AppColors.white,
                                   ),
                                   checkColor: AppColors.purple,
-                                ),
+                                ),),
                               ),
                               const SizedBox(
                                 width: 9,

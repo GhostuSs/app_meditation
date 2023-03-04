@@ -62,7 +62,7 @@ class _PersonalizingScreenState extends State<PersonalizingScreen>
                           applocale.personalizingContent,
                           textAlign: TextAlign.center,
                           style: AppTypography.mainStyle.copyWith(
-                            fontSize: 34.w,
+                            fontSize: 34.sp,
                             fontWeight: FontWeight.w800,
                             color: AppColors.white,
                           ),

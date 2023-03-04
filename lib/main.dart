@@ -27,6 +27,9 @@ Future<void> main() async {
   await Hive.openBox<UserData>('user');
   await Hive.openBox<bool>('onbseen');
   await Hive.openBox<bool>('premium');
+  // await Hive.box<UserData>('user').clear();
+  // await Hive.box<bool>('onbseen').clear();
+  // await Hive.box<bool>('premium').clear();
 
   if (Hive.box<bool>('premium').isEmpty == true) {
     await Hive.box<bool>('premium').put('premium', false);
@@ -70,7 +73,8 @@ class App extends StatelessWidget {
           ],
           supportedLocales: AppLocalizations.supportedLocales,
           locale: const Locale('en'),
-          home: Hive.box<bool>('onbseen').values.first == false
+          home:
+          Hive.box<bool>('onbseen').values.first == false
               ? Hive.box<UserData>('user').values.first.name == null
                   ? OnboardingScreen()
                   : const AuthScreen()
