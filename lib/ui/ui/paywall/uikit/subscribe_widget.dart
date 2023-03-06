@@ -49,7 +49,7 @@ class SubscribeWidget extends StatelessWidget {
               ),
             ),
             Column(
-              mainAxisSize:MainAxisSize.min,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   '\$$price',
@@ -69,28 +69,34 @@ class SubscribeWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 11,),
-            bestValue == true && isSelected ?  Container(
-                width: 116.w,
-                height: 16.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.r),
-                    topRight: Radius.circular(10.r),
-                  ),
-                  color: AppColors.black,
-                ),
-                child: Center(
-                  child: Text(
-                    applocale.best,
-                    style: AppTypography.mainStyle.copyWith(
-                      fontWeight: FontWeight.w300,
-                      fontSize: 11.5.sp,
-                      color: AppColors.white,
+            const SizedBox(
+              height: 11,
+            ),
+            bestValue == true && isSelected
+                ? Container(
+                    width: 116.w,
+                    height: 16.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.r),
+                        topRight: Radius.circular(10.r),
+                      ),
+                      color: AppColors.black,
                     ),
-                  ),
-                ),
-              ) : SizedBox(height: 16.h,)
+                    child: Center(
+                      child: Text(
+                        applocale.best,
+                        style: AppTypography.mainStyle.copyWith(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 11.5.sp,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                : SizedBox(
+                    height: 16.h,
+                  )
           ],
         ),
       ),

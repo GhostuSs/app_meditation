@@ -48,7 +48,7 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
     try {
       await _player.setAudioSource(
           AudioSource.asset('assets/audio/${widget.meditationName}.mp3'));
-    } catch (e) {
+    } on Exception catch (e) {
       debugPrint('Error loading audio source: $e');
     }
     await _player.play();

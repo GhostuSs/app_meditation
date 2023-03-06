@@ -77,136 +77,139 @@ class OnboardingScreen extends StatelessWidget {
     AppColors.green
   ];
 
-  List<Widget> pages(BuildContext context)=>[
-    Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 25.h),
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/images/onb1img.png',
-            height: MediaQuery.of(context).size.height/2,
-          ),
-          Text(
-            'Improve your\nrelationship',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-              fontSize: 44.sp,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: 16,),
-          Text(
-            'Share moments. Be mindful and\nlearn your partner. Be happier\ntogether',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-                fontSize: 17.sp, fontWeight: FontWeight.w300),
-          ),
-        ],
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 40.h),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-              'Play & Learn\nabout your\npartner',
-              textAlign: TextAlign.center,
-              style: AppTypography.mainStyle.copyWith(
-                fontSize: 40.sp,
-                fontWeight: FontWeight.w900,
-                height: 0.9
+  List<Widget> pages(BuildContext context) => [
+        Padding(
+          padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 25.h),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/onb1img.png',
+                height: MediaQuery.of(context).size.height / 2,
               ),
-            ),
-          ),
-          Positioned(
-            bottom: -80,
-              child: Image.asset(
-                'assets/images/onb2img.png',
-                height: MediaQuery.of(context).size.height*2/2.5,
-                width: MediaQuery.of(context).size.width*0.9,
+              Text(
+                'Improve your\nrelationship',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle.copyWith(
+                  fontSize: 44.sp,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-          ),
-        ],
-      ),
-    ),
-    Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          left: -10.w,
-          top: -10.h,
-          child: Image.asset(
-            'assets/images/onb3img.png',
-            height: MediaQuery.of(context).size.height/1.75,
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                'Share moments. Be mindful and\nlearn your partner. Be happier\ntogether',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle
+                    .copyWith(fontSize: 17.sp, fontWeight: FontWeight.w300),
+              ),
+            ],
           ),
         ),
-        Positioned(
-          top: MediaQuery.of(context).size.height*0.55,
-          child: Text(
-            'Improve your\nrelationship.\nBe mindful.',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-              fontSize: 40.sp,
-              fontWeight: FontWeight.w900,
-            ),
+        Padding(
+          padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 40.h),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'Play & Learn\nabout your\npartner',
+                  textAlign: TextAlign.center,
+                  style: AppTypography.mainStyle.copyWith(
+                      fontSize: 40.sp,
+                      fontWeight: FontWeight.w900,
+                      height: 0.9),
+                ),
+              ),
+              Positioned(
+                bottom: -80,
+                child: Image.asset(
+                  'assets/images/onb2img.png',
+                  height: MediaQuery.of(context).size.height * 2 / 2.5,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                ),
+              ),
+            ],
           ),
-        )
-      ],
-    ),
-    Padding(
-      padding: EdgeInsets.only(top: 40.h),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Column(children: [
-              Text(
-                'Chat &\nhave fun',
+        ),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(
+              left: -10.w,
+              top: -10.h,
+              child: Image.asset(
+                'assets/images/onb3img.png',
+                height: MediaQuery.of(context).size.height / 1.75,
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.55,
+              child: Text(
+                'Improve your\nrelationship.\nBe mindful.',
                 textAlign: TextAlign.center,
                 style: AppTypography.mainStyle.copyWith(
                   fontSize: 40.sp,
                   fontWeight: FontWeight.w900,
-                  height: 0.9
                 ),
               ),
-              Text(
-                'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
-                textAlign: TextAlign.center,
-                style: AppTypography.mainStyle
-                    .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w300,),
+            )
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 40.h),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Column(children: [
+                  Text(
+                    'Chat &\nhave fun',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.mainStyle.copyWith(
+                        fontSize: 40.sp,
+                        fontWeight: FontWeight.w900,
+                        height: 0.9),
+                  ),
+                  Text(
+                    'Private enrypted chat. Your data\nis not stored anywhere. Unleash\nyour creativity.',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.mainStyle.copyWith(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ]),
               ),
-            ]),
+              Positioned(
+                bottom: 40.h,
+                child: Image.asset(
+                  'assets/images/onb4img.png',
+                  height: MediaQuery.of(context).size.height / 1.65,
+                ),
+              ),
+            ],
           ),
-          Positioned(
-              bottom: 40.h,
-              child: Image.asset(
-                'assets/images/onb4img.png',
-                height: MediaQuery.of(context).size.height/1.65,
-              ),),
-        ],
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/images/onb5img.png',
-            height: MediaQuery.of(context).size.height*0.6,
-            // width: MediaQuery.of(context).size.width,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/onb5img.png',
+                height: MediaQuery.of(context).size.height * 0.6,
+                // width: MediaQuery.of(context).size.width,
+              ),
+              Text(
+                'Create & save\nmemories',
+                textAlign: TextAlign.center,
+                style: AppTypography.mainStyle.copyWith(
+                  fontSize: 38.sp,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ],
           ),
-          Text(
-            'Create & save\nmemories',
-            textAlign: TextAlign.center,
-            style: AppTypography.mainStyle.copyWith(
-              fontSize: 38.sp,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ],
-      ),
-    )
-  ];
+        )
+      ];
 }

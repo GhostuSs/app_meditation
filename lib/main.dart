@@ -73,8 +73,7 @@ class App extends StatelessWidget {
           ],
           supportedLocales: AppLocalizations.supportedLocales,
           locale: const Locale('en'),
-          home:
-          Hive.box<bool>('onbseen').values.first == false
+          home: Hive.box<bool>('onbseen').values.first == false
               ? Hive.box<UserData>('user').values.first.name == null
                   ? OnboardingScreen()
                   : const AuthScreen()
@@ -97,11 +96,16 @@ Future<void> _initPlatformState() async {
           }),
         ),
   );
-  // await OneSignal.shared.setLogLevel(OSLogLevel.info, OSLogLevel.info);
   try {
     analytics = Amplitude.getInstance(instanceName: 'soulmates');
-    final appsFlyerOptions = AppsFlyerOptions(afDevKey: AppConfig.afDevKey,appId: Platform.isIOS ? '6446036639' : 'com.maximmovchan.app_meditation');
-    unawaited(AppsflyerSdk(appsFlyerOptions).initSdk(registerConversionDataCallback: true,registerOnAppOpenAttributionCallback: true,registerOnDeepLinkingCallback: true));
+    final appsFlyerOptions = AppsFlyerOptions(
+        afDevKey: AppConfig.afDevKey,
+        appId:
+            Platform.isIOS ? AppConfig.iosAppID : AppConfig.androidAppID);
+    unawaited(AppsflyerSdk(appsFlyerOptions).initSdk(
+        registerConversionDataCallback: true,
+        registerOnAppOpenAttributionCallback: true,
+        registerOnDeepLinkingCallback: true));
     final Map<String, dynamic> appOpenedEvent = <String, dynamic>{
       'opened_at': DateTime.now().toString(),
       'auth_completed': Hive.box<UserData>('user').values.first.authcompleted,
@@ -112,7 +116,7 @@ Future<void> _initPlatformState() async {
     };
     await analytics.init(AppConfig.amplitudeKey);
     await analytics.logEvent('app_opened', eventProperties: appOpenedEvent);
-  } catch (e) {
+  } on Exception catch (e) {
     debugPrint(e.toString());
   }
 }

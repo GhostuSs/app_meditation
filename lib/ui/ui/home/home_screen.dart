@@ -44,161 +44,182 @@ class HomeScreen extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                          text:'Invite',
-                          style: AppTypography.mainStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16.sp,
-                              color: AppColors.black),
-                          recognizer: TapGestureRecognizer()..onTap = () => showDialog<Widget>(
-                            context: context,
-                            builder: (context) => BackdropFilter(
-                                filter:
-                                ui.ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 35),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.end,
-                                          children: [
-                                            InkWell(
-                                              onTap: () =>
-                                                  Navigator.pop(context),
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              splashColor: Colors.transparent,
-                                              highlightColor:
-                                              Colors.transparent,
-                                              child: Icon(
-                                                Icons.clear,
-                                                size: 24.h,
-                                                color: AppColors.white,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Dialog(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(20.r)),
-                                        child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 28.w,
-                                              vertical: 38.h),
-                                          decoration: BoxDecoration(
-                                              color: AppColors.white,
-                                              borderRadius:
-                                              BorderRadius.circular(
-                                                  20.r)),
+                            text: 'Invite',
+                            style: AppTypography.mainStyle.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                                color: AppColors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => showDialog<Widget>(
+                                    context: context,
+                                    builder: (context) => BackdropFilter(
+                                        filter: ui.ImageFilter.blur(
+                                            sigmaX: 6, sigmaY: 6),
+                                        child: Material(
+                                          color: Colors.transparent,
                                           child: Column(
-                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
                                             children: [
-                                              Text(
-                                                'Sharing',
-                                                style: AppTypography.mainStyle
-                                                    .copyWith(
-                                                  fontWeight: FontWeight.w800,
-                                                  fontSize: 34.sp,
-                                                  color: AppColors.black,
-                                                ),
-                                              ),
                                               Padding(
-                                                padding:
-                                                const EdgeInsets.only(
-                                                    top: 30, bottom: 20),
-                                                child: Text(
-                                                  'Share this link to your partner\nto pair your accounts:',
-                                                  textAlign: TextAlign.center,
-                                                  style: AppTypography
-                                                      .mainStyle
-                                                      .copyWith(
-                                                    fontSize: 16.sp,
-                                                    fontWeight:
-                                                    FontWeight.w400,
-                                                    color: AppColors.black,
-                                                  ),
+                                                padding: const EdgeInsets.only(
+                                                    right: 35),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () =>
+                                                          Navigator.pop(
+                                                              context),
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      child: Icon(
+                                                        Icons.clear,
+                                                        size: 24.h,
+                                                        color: AppColors.white,
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
                                               ),
-                                              InkWell(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                  FlutterClipboard.copy(
-                                                    BaseUrls.shareLink,
-                                                  ).then(
-                                                        (value) =>
-                                                        ScaffoldMessenger.of(
-                                                            context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            action:
-                                                            SnackBarAction(
-                                                              label: 'Undo',
-                                                              textColor: Colors
-                                                                  .redAccent,
-                                                              onPressed: () =>
-                                                                  Clipboard
-                                                                      .setData(
+                                              Dialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.r)),
+                                                child: Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 28.w,
+                                                      vertical: 38.h),
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.r)),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Text(
+                                                        'Sharing',
+                                                        style: AppTypography
+                                                            .mainStyle
+                                                            .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                          fontSize: 34.sp,
+                                                          color:
+                                                              AppColors.black,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 30,
+                                                                bottom: 20),
+                                                        child: Text(
+                                                          'Share this link to your partner\nto pair your accounts:',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: AppTypography
+                                                              .mainStyle
+                                                              .copyWith(
+                                                            fontSize: 16.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                AppColors.black,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          FlutterClipboard.copy(
+                                                            BaseUrls.shareLink,
+                                                          ).then(
+                                                            (value) =>
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                              SnackBar(
+                                                                action:
+                                                                    SnackBarAction(
+                                                                  label: 'Undo',
+                                                                  textColor: Colors
+                                                                      .redAccent,
+                                                                  onPressed: () =>
+                                                                      Clipboard
+                                                                          .setData(
                                                                     const ClipboardData(
                                                                       text: '',
                                                                     ),
                                                                   ),
+                                                                ),
+                                                                content: Text(
+                                                                  'link was coppied to clipboard',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          16.sp),
+                                                                ),
+                                                                backgroundColor:
+                                                                    AppColors
+                                                                        .darkGray
+                                                                        .withOpacity(
+                                                                  0.5,
+                                                                ),
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            3),
+                                                              ),
                                                             ),
-                                                            content: Text(
-                                                              'link was coppied to clipboard',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize: 16.sp),
-                                                            ),
-                                                            backgroundColor:
-                                                            AppColors.darkGray
-                                                                .withOpacity(
-                                                              0.5,
-                                                            ),
-                                                            duration:
-                                                            const Duration(
-                                                                seconds: 3),
+                                                          );
+                                                        },
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        child: Text(
+                                                          BaseUrls.shareLink,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: AppTypography
+                                                              .mainStyle
+                                                              .copyWith(
+                                                            fontSize: 14.sp,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: AppColors
+                                                                .purple,
                                                           ),
                                                         ),
-                                                  );
-                                                },
-                                                focusColor:
-                                                Colors.transparent,
-                                                highlightColor:
-                                                Colors.transparent,
-                                                hoverColor:
-                                                Colors.transparent,
-                                                splashColor:
-                                                Colors.transparent,
-                                                child: Text(
-                                                  BaseUrls.shareLink,
-                                                  textAlign: TextAlign.center,
-                                                  style: AppTypography
-                                                      .mainStyle
-                                                      .copyWith(
-                                                    fontSize: 14.sp,
-                                                    fontWeight:
-                                                    FontWeight.w600,
-                                                    color: AppColors.purple,
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               )
                                             ],
                                           ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )),
-                          )
-                        ),
+                                        )),
+                                  )),
                         TextSpan(
                             text: ' your partner',
                             style: AppTypography.mainStyle.copyWith(

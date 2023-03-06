@@ -68,7 +68,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                 ),
                 SvgPicture.asset(
                   Assets.imagesPaywall,
-                  height: MediaQuery.of(context).size.height/4.5,
+                  height: MediaQuery.of(context).size.height / 4.5,
                 ),
                 Text(
                   applocale.trySoulmates,
