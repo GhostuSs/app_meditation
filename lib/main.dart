@@ -100,12 +100,14 @@ Future<void> _initPlatformState() async {
     analytics = Amplitude.getInstance(instanceName: 'soulmates');
     final appsFlyerOptions = AppsFlyerOptions(
         afDevKey: AppConfig.afDevKey,
-        appId:
-            Platform.isIOS ? AppConfig.iosAppID : AppConfig.androidAppID);
-    unawaited(AppsflyerSdk(appsFlyerOptions).initSdk(
+        appId: Platform.isIOS ? AppConfig.iosAppID : AppConfig.androidAppID);
+    unawaited(
+      AppsflyerSdk(appsFlyerOptions).initSdk(
         registerConversionDataCallback: true,
         registerOnAppOpenAttributionCallback: true,
-        registerOnDeepLinkingCallback: true));
+        registerOnDeepLinkingCallback: true,
+      ),
+    );
     final Map<String, dynamic> appOpenedEvent = <String, dynamic>{
       'opened_at': DateTime.now().toString(),
       'auth_completed': Hive.box<UserData>('user').values.first.authcompleted,
