@@ -55,16 +55,19 @@ class SubscribeWidget extends StatelessWidget {
                   '\$$price',
                   style: AppTypography.mainStyle.copyWith(
                     fontSize: 28.sp,
+                    decoration: TextDecoration.lineThrough,
                     fontWeight: FontWeight.w800,
                     color: isSelected ? AppColors.purple : AppColors.white,
                   ),
                 ),
-                Text(
-                  footer,
-                  style: AppTypography.mainStyle.copyWith(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w300,
-                    color: isSelected ? AppColors.black : AppColors.white,
+                RichText(
+                  text:TextSpan(
+                      text:footer,
+                      style: AppTypography.mainStyle.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w300,
+                        color: isSelected ? AppColors.black : AppColors.white,
+                      )
                   ),
                 ),
               ],

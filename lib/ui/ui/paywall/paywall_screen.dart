@@ -116,7 +116,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       price: '39.99',
                       isSelected: selected == 0,
                       header: applocale.annual,
-                      footer: '\$3.99 ${applocale.perMonth}',
+                      footer: '\$0 ${applocale.perMonth}',
                       bestValue: true,
                     ),
                     SizedBox(
@@ -129,7 +129,7 @@ class _PayWallScreenState extends State<PayWallScreen> {
                       price: '4.99',
                       isSelected: selected == 1,
                       header: applocale.monthly,
-                      footer: applocale.perMonth,
+                      footer: '\$0 ${applocale.perMonth}',
                     )
                   ],
                 ),

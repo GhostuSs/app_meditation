@@ -8,6 +8,7 @@ import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
 import 'package:app_meditation/ui/ui/home/home_screen.dart';
 import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
