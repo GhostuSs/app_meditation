@@ -61,14 +61,13 @@ class SubscribeWidget extends StatelessWidget {
                   ),
                 ),
                 RichText(
-                  text:TextSpan(
-                      text:footer,
+                  text: TextSpan(
+                      text: footer,
                       style: AppTypography.mainStyle.copyWith(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w300,
                         color: isSelected ? AppColors.black : AppColors.white,
-                      )
-                  ),
+                      )),
                 ),
               ],
             ),
