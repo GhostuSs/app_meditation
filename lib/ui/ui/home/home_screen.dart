@@ -267,7 +267,7 @@ class HomeScreen extends StatelessWidget {
                         label:applocale.howToCrAndSv,
                         iconPath: Assets.imagesPersonCircle,
                       ),
-                      SizedBox(height: 50.h,),
+                      SizedBox(height: 100.h,),
                     ],
                   ))
                 ],

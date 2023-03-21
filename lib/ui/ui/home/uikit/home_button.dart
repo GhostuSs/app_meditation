@@ -44,7 +44,7 @@ class HomeButton extends StatelessWidget {
                 const SizedBox(
                   width: 12,
                 ),
-                Container(
+                SizedBox(
                   width: 200.w,
                   child: RichText(
                     text: TextSpan(
