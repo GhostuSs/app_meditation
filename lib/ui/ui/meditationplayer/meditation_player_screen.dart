@@ -12,9 +12,10 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MeditationPlayerScreen extends StatefulWidget {
-  const MeditationPlayerScreen({Key? key, required this.meditationName})
+  const MeditationPlayerScreen({Key? key, required this.meditationName, required this.label})
       : super(key: key);
   final String meditationName;
+  final String label;
 
   @override
   MeditationPlayerScreenState createState() => MeditationPlayerScreenState();
@@ -130,12 +131,17 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
                             const Spacer(),
                             Padding(
                               padding: EdgeInsets.only(left: 5.w),
-                              child: Text(
-                                meditationFullName(widget.meditationName),
-                                style: AppTypography.mainStyle.copyWith(
-                                  fontSize: 17.w,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.white,
+                              child: Container(
+                                constraints: const BoxConstraints.tightFor(width: double.infinity),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text:widget.label,
+                                    style: AppTypography.mainStyle.copyWith(
+                                      fontSize: 16.5.w,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -181,19 +187,6 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
         ],
       ),
     );
-  }
-
-  String meditationFullName(String shortname) {
-    switch (shortname) {
-      case 'feelcalm':
-        return 'Relationship couching';
-      case 'meditate':
-        return 'Resolve conflicts';
-      case 'sleepspace':
-        return 'Date ideas';
-      default:
-        return '';
-    }
   }
 }
 

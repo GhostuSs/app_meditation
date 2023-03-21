@@ -26,29 +26,35 @@ class HomeButton extends StatelessWidget {
             PageTransition(
               child: MeditationPlayerScreen(
                 meditationName: meditationName,
+                label:label,
               ),
               type: PageTransitionType.rightToLeft,
             ),
           ),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            padding: EdgeInsets.symmetric(horizontal: 28.w,vertical: 20.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
               border: Border.all(color: AppColors.white),
             ),
-            constraints: BoxConstraints.expand(height: 60.h),
+            // constraints: BoxConstraints.expand(height: 60.h),
             child: Row(
               children: [
                 SvgPicture.asset(iconPath),
                 const SizedBox(
-                  width: 17,
+                  width: 12,
                 ),
-                Text(
-                  label,
-                  style: AppTypography.mainStyle.copyWith(
-                    fontSize: 17.w,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
+                Container(
+                  width: 200.w,
+                  child: RichText(
+                    text: TextSpan(
+                      text: label,
+                      style: AppTypography.mainStyle.copyWith(
+                        fontSize: 16.5.w,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.white,
+                      ),
+                    ),
                   ),
                 )
               ],

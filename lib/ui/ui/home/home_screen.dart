@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           const BgDecoration(),
           SafeArea(
+            bottom: false,
               minimum: EdgeInsets.symmetric(horizontal: 28.w),
               child: Column(
                 children: [
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5, bottom: 70),
+                    padding: const EdgeInsets.only(top: 5,bottom: 10),
                     child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
@@ -229,21 +230,46 @@ class HomeScreen extends StatelessWidget {
                       ]),
                     ),
                   ),
-                  HomeButton(
-                    meditationName: 'feelcalm',
-                    label: applocale.relationshipCouching,
-                    iconPath: Assets.imagesPersonCircle,
-                  ),
-                  HomeButton(
-                    meditationName: 'meditate',
-                    label: applocale.resolveConflicts,
-                    iconPath: Assets.imagesHeartDamaged,
-                  ),
-                  HomeButton(
-                    meditationName: 'sleepspace',
-                    label: applocale.dateIdeas,
-                    iconPath: Assets.imagesFire,
-                  ),
+                  Expanded(child: ListView(
+                    children: [
+                      HomeButton(
+                        meditationName: 'feelcalm',
+                        label: applocale.relationshipCouching,
+                        iconPath: Assets.imagesPersonCircle,
+                      ),
+                      HomeButton(
+                        meditationName: 'meditate',
+                        label: applocale.resolveConflicts,
+                        iconPath: Assets.imagesHeartDamaged,
+                      ),
+                      HomeButton(
+                        meditationName: 'sleepspace',
+                        label: applocale.dateIdeas,
+                        iconPath: Assets.imagesFire,
+                      ),
+                      HomeButton(
+                        meditationName:'couplestherapy',
+                        label:applocale.couplesTherapy,
+                        iconPath: Assets.imagesHeartDamaged,
+                      ),
+                      HomeButton(
+                        meditationName:'couplegames',
+                        label:applocale.coupleGames,
+                        iconPath: Assets.imagesFire,
+                      ),
+                      HomeButton(
+                        meditationName:'improveattr',
+                        label:applocale.improveAttrInCouple,
+                        iconPath: Assets.imagesPersonCircle,
+                      ),
+                      HomeButton(
+                        meditationName:'howtocreateandsavmemories',
+                        label:applocale.howToCrAndSv,
+                        iconPath: Assets.imagesPersonCircle,
+                      ),
+                      SizedBox(height: 50.h,),
+                    ],
+                  ))
                 ],
               ))
         ],
