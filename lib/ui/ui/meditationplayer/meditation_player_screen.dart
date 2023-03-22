@@ -12,7 +12,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MeditationPlayerScreen extends StatefulWidget {
-  const MeditationPlayerScreen({Key? key, required this.meditationName, required this.label})
+  const MeditationPlayerScreen(
+      {Key? key, required this.meditationName, required this.label})
       : super(key: key);
   final String meditationName;
   final String label;
@@ -132,10 +133,11 @@ class MeditationPlayerScreenState extends State<MeditationPlayerScreen>
                             Padding(
                               padding: EdgeInsets.only(left: 5.w),
                               child: Container(
-                                constraints: const BoxConstraints.tightFor(width: double.infinity),
+                                constraints: const BoxConstraints.tightFor(
+                                    width: double.infinity),
                                 child: RichText(
                                   text: TextSpan(
-                                    text:widget.label,
+                                    text: widget.label,
                                     style: AppTypography.mainStyle.copyWith(
                                       fontSize: 16.5.w,
                                       fontWeight: FontWeight.w600,

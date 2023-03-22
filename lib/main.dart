@@ -31,7 +31,6 @@ Future<void> main() async {
   // await Hive.box<UserData>('user').clear();
   // await Hive.box<bool>('onbseen').clear();
   // await Hive.box<bool>('premium').clear();
-
   if (Hive.box<bool>('premium').isEmpty == true) {
     await Hive.box<bool>('premium').put('premium', false);
   }

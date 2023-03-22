@@ -26,13 +26,13 @@ class HomeButton extends StatelessWidget {
             PageTransition(
               child: MeditationPlayerScreen(
                 meditationName: meditationName,
-                label:label,
+                label: label,
               ),
               type: PageTransitionType.rightToLeft,
             ),
           ),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 28.w,vertical: 20.h),
+            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 20.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
               border: Border.all(color: AppColors.white),
