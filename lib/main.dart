@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:amplitude_flutter/amplitude.dart';
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';

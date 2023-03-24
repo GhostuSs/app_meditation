@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Hi${Hive.box<UserData>('user').values.first.name?.isNotEmpty == true ? ", ${Hive.box<UserData>('user').values.first.name}" : ''}',
+                  'Hi${Hive.box<UserData>('user').values.first.name?.isNotEmpty==true? ", ${Hive.box<UserData>('user').values.first.name}" : ''}',
                   overflow: TextOverflow.clip,
                   style: AppTypography.mainStyle.copyWith(
                     fontSize: 33.sp,
@@ -41,7 +41,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5, bottom: 10),
+                  padding: const EdgeInsets.only(
+                    top: 5,
+                    bottom: 10,
+                  ),
                   child: RichText(
                     text: TextSpan(children: [
                       TextSpan(
@@ -291,11 +294,10 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> _deleteAcc(BuildContext context) async {
     Navigator.pop(context);
-    await Hive.box<UserData>('user').clear();
     await Hive.box<UserData>('user').put(
       'user',
       UserData(
-        name: '',
+        name: ''
       ),
     );
     await showCupertinoDialog<void>(

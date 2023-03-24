@@ -28,9 +28,7 @@ class HomeButton extends StatelessWidget {
             Navigator.push<Widget>(
               context,
               PageTransition(
-                child: Hive.box<UserData>('user').values.first.name == null ||
-                        Hive.box<UserData>('user').values.first.name?.isEmpty ==
-                            true
+                child: Hive.box<UserData>('user').values.first.name==null
                     ? const AuthScreen()
                     : MeditationPlayerScreen(
                         meditationName: meditationName,
