@@ -1,9 +1,12 @@
+import 'package:app_meditation/domain/user_model/user_model.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
+import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
 import 'package:app_meditation/ui/ui/meditationplayer/meditation_player_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
 import 'package:page_transition/page_transition.dart';
 
 class HomeButton extends StatelessWidget {
@@ -19,20 +22,26 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: EdgeInsets.only(bottom: 14.h),
         child: InkWell(
-          onTap: () => Navigator.push<Widget>(
-            context,
-            PageTransition(
-              child: MeditationPlayerScreen(
-                meditationName: meditationName,
-                label: label,
+          onTap: () {
+            Navigator.push<Widget>(
+              context,
+              PageTransition(
+                child: Hive.box<UserData>('user').values.first.name == null ||
+                        Hive.box<UserData>('user').values.first.name?.isEmpty ==
+                            true
+                    ? const AuthScreen()
+                    : MeditationPlayerScreen(
+                        meditationName: meditationName,
+                        label: label,
+                      ),
+                type: PageTransitionType.rightToLeft,
               ),
-              type: PageTransitionType.rightToLeft,
-            ),
-          ),
+            );
+          },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 20.h),
+            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 18.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
               border: Border.all(color: AppColors.white),

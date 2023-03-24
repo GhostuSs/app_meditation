@@ -5,7 +5,6 @@ import 'package:amplitude_flutter/amplitude.dart';
 import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
 import 'package:app_meditation/ui/res/app_theme.dart';
-import 'package:app_meditation/ui/ui/auth/auth_screen.dart';
 import 'package:app_meditation/ui/ui/home/home_screen.dart';
 import 'package:app_meditation/ui/ui/onboarding/ui/onboarding_screen.dart';
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
@@ -40,18 +39,23 @@ Future<void> main() async {
 
   if (Hive.box<UserData>('user').isEmpty == true) {
     await Hive.box<UserData>('user').put(
-        'user',
-        UserData(
-            onbpassed: false, firstActivation: true, authcompleted: false));
+      'user',
+      UserData(
+        onbpassed: false,
+        firstActivation: true,
+        authcompleted: false,
+      ),
+    );
     firstActivation = true;
   }
   await _initPlatformState();
   if (firstActivation) {
-    unawaited(analytics
-        .logEvent('first_activation', eventProperties: <String, dynamic>{
-      'date': DateTime.now().toString(),
-      'timezone': DateTime.now().timeZoneName,
-    }));
+    unawaited(
+      analytics.logEvent('first_activation', eventProperties: <String, dynamic>{
+        'date': DateTime.now().toString(),
+        'timezone': DateTime.now().timeZoneName,
+      }),
+    );
   }
   runApp(const App());
 }
@@ -62,25 +66,22 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-          theme: AppTheme.mainTheme,
-          debugShowCheckedModeBanner: false,
-          title: 'Soulmates',
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            AppLocalizations.delegate
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: const Locale('en'),
-          home: Hive.box<bool>('onbseen').values.first == false
-              ? Hive.box<UserData>('user').values.first.name == null
-                  ? OnboardingScreen()
-                  : const AuthScreen()
-              : Hive.box<UserData>('user').values.first.name == null
-                  ? const AuthScreen()
-                  : const HomeScreen(),
-        ),
+            theme: AppTheme.mainTheme,
+            debugShowCheckedModeBanner: false,
+            title: 'Soulmates',
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              AppLocalizations.delegate
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: const Locale('en'),
+            home: Hive.box<bool>('onbseen').values.first == false
+                ? Hive.box<UserData>('user').values.first.name == null
+                    ? OnboardingScreen()
+                    : const HomeScreen()
+                : const HomeScreen()),
       );
 }
 

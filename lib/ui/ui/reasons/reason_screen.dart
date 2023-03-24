@@ -38,7 +38,7 @@ class _ReasonScreenState extends State<ReasonScreen> {
               padding: const EdgeInsets.only(
                 left: 20,
                 right: 20,
-                top: 30,
+                top: 45,
               ),
               child: Column(
                 children: [
@@ -53,7 +53,7 @@ class _ReasonScreenState extends State<ReasonScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   ReasonCard(
                     label: applocale.completeQuizes,

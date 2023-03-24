@@ -12,9 +12,11 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MeditationPlayerScreen extends StatefulWidget {
-  const MeditationPlayerScreen(
-      {Key? key, required this.meditationName, required this.label})
-      : super(key: key);
+  const MeditationPlayerScreen({
+    Key? key,
+    required this.meditationName,
+    required this.label,
+  }) : super(key: key);
   final String meditationName;
   final String label;
 
