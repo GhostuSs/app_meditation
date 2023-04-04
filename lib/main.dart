@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:amplitude_flutter/amplitude.dart';
@@ -118,7 +119,7 @@ Future<void> _initPlatformState() async {
       'subscription': Hive.box<bool>('premium').values.first.toString(),
     };
     await analytics.init(AppConfig.amplitudeKey);
-    await analytics.logEvent('app_opened', eventProperties: appOpenedEvent);
+    // await analytics.logEvent('app_opened', eventProperties: appOpenedEvent);
   } on Exception catch (e) {
     debugPrint(e.toString());
   }

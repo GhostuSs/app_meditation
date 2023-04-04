@@ -291,13 +291,13 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> _deleteAcc(BuildContext context) async {
     Navigator.pop(context);
-    await Hive.box<UserData>('user').clear();
-    await Hive.box<UserData>('user').put(
-      'user',
-      UserData(
-        name: '',
-      ),
-    );
+    // await Hive.box<UserData>('user').clear();
+    // await Hive.box<UserData>('user').put(
+    //   'user',
+    //   UserData(
+    //     name: '',
+    //   ),
+    // );
     await showCupertinoDialog<void>(
       context: context,
       builder: (w) => CupertinoAlertDialog(

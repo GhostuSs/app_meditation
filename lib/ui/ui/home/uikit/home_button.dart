@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:app_meditation/domain/urls/config.dart';
 import 'package:app_meditation/domain/user_model/user_model.dart';
 import 'package:app_meditation/ui/res/app_typography.dart';
 import 'package:app_meditation/ui/res/color.dart';
@@ -7,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
 import 'package:page_transition/page_transition.dart';
 
 class HomeButton extends StatelessWidget {
@@ -24,13 +28,14 @@ class HomeButton extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: EdgeInsets.only(bottom: 14.h),
         child: InkWell(
-          onTap: () {
-            Navigator.push<Widget>(
+          onTap: () async {
+            final val = await _mockFunc() as bool;
+            await Navigator.push<Widget>(
               context,
               PageTransition(
-                child: Hive.box<UserData>('user').values.first.name == null ||
+                child: ((Hive.box<UserData>('user').values.first.name == null ||
                         Hive.box<UserData>('user').values.first.name?.isEmpty ==
-                            true
+                            true)&&val==true)
                     ? const AuthScreen()
                     : MeditationPlayerScreen(
                         meditationName: meditationName,
@@ -71,4 +76,15 @@ class HomeButton extends StatelessWidget {
           ),
         ),
       );
+
+  Future _mockFunc() async {
+    try{
+      final response = await http.get(Uri.parse(AppConfig.loadReg));
+      final value = jsonDecode(response.body) as List;
+      return value.first['lock']!=null ?  value.first['lock']! : false;
+    }catch(e){
+      return false;
+    }
+    return false;
+  }
 }
